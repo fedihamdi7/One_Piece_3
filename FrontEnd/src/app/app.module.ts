@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { DashRespoComponent } from './dash-respo/dash-respo.component';
 import { ClubComponent } from './club/club.component';
 import { DashAdminComponent } from './dash-admin/dash-admin.component';
+import { AllClubsComponent } from './all-clubs/all-clubs.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashAdminComponent } from './dash-admin/dash-admin.component';
     DashRespoComponent,
     ClubComponent,
     DashAdminComponent,
+    AllClubsComponent,
 
   ],
   imports: [

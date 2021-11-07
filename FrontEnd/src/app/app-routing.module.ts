@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { AuthComponent } from './auth/auth.component';
 import { ClubComponent } from './club/club.component';
 import { DashAdminComponent } from './dash-admin/dash-admin.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'responsable',component:DashRespoComponent},
   {path:'club',component:ClubComponent},
+  {path:'allclubs',component:AllClubsComponent},
   {path:'admin',component:DashAdminComponent}
 ];
 
