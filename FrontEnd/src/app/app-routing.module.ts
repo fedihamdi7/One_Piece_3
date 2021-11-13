@@ -8,8 +8,8 @@ import { DashRespoComponent } from './dash-respo/dash-respo.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:'auth',component:AuthComponent},
   {path:'',component:HomeComponent},
+  {path:'auth',component:AuthComponent},
   {path:'responsable',component:DashRespoComponent},
   {path:'club',component:ClubComponent},
   {path:'allclubs',component:AllClubsComponent},
