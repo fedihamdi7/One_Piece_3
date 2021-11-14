@@ -15,6 +15,7 @@ const routes: Routes = [
   {path:'club',component:ClubComponent},
   {path:'allclubs',component:AllClubsComponent},
   {path:'admin',component:DashAdminComponent},
+  { path: 'dash-respo', loadChildren: () => import('./dash-respo/dash-respo.module').then(m => m.DashRespoModule) },
   {path:'**',component:NotFoundComponent}
 ];
 
