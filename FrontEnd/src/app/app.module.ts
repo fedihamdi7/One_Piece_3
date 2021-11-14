@@ -16,7 +16,6 @@ import { AllClubsComponent } from './all-clubs/all-clubs.component';
     AppComponent,
     NavbarComponent,
     AuthComponent,
-    HomeComponent,
     DashRespoComponent,
     ClubComponent,
     DashAdminComponent,
