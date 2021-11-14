@@ -1,0 +1,66 @@
+/* MAIN CONTAINER  */
+.main-container{
+  display: flex;
+}
+/* SIDE BAR  */
+
+.side-bar{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 93vh;
+  margin-top: 0vh;
+  width: 18vw;
+  background-color: #1d2434;
+}
+.side-bar .logo-club{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.side-bar .logo-club img{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-top: 5%;
+}
+.side-bar .logo-club .club-name{
+  color: white;
+  margin-top: 8%;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.side-bar .navigation ul{
+  list-style-type:none;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+
+}
+.side-bar .navigation ul a{
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+
+}
+.side-bar .navigation ul a:hover{
+  text-decoration: none;
+  color: rgb(199, 200, 202);
+
+}
+
+.navigation{
+  margin-left: 20%;
+  margin-top: 20%;
+  font-size: 21px;
+}
+
+/* CONTENU  */
+.contenu{
+  width:82vw;
+  margin-left: 18vw;
+  margin-top: 10vh;
+  scroll-behavior: smooth;
+}
