@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashRespoRoutingModule } from './dash-respo-routing.module';
 import { DashRespoComponent } from './dash-respo.component';
-import { EventsComponent } from './events/events/events.component';
+import { EventsComponent } from './events/events.component';
 
 
 @NgModule({
