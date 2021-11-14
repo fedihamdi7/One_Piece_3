@@ -9,8 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
+  {path:'',component:HomeComponent},
   {path:'auth',component:AuthComponent},
-  {path:'home',component:HomeComponent},
   {path:'responsable',component:DashRespoComponent},
   {path:'club',component:ClubComponent},
   {path:'allclubs',component:AllClubsComponent},
