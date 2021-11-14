@@ -13,8 +13,8 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'club',component:ClubComponent},
   {path:'allclubs',component:AllClubsComponent},
-  {path:'admin',component:DashAdminComponent},
   { path: 'dash-respo', loadChildren: () => import('./dash-respo/dash-respo.module').then(m => m.DashRespoModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   {path:'**',component:NotFoundComponent}
 ];
 
