@@ -1,4 +1,19 @@
 <app-dash-respo></app-dash-respo>
 <div class="contenu">
-<p>events works!</p>
+  <table class="table table-margin">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of eventsList">
+        <th scope="row">{{event.id}} </th>
+        <td>{{event.event_date}}</td>
+        <td> <a> <button  type="button" routerLink="{{event.id}}" class="btn btn-info"> Details </button> </a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

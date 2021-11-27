@@ -1,0 +1,18 @@
+<app-dash-respo></app-dash-respo>
+<div class="contenu">
+
+  <!-- <p> {{event?.id}} </p>
+  <img src="./../../../../assets/img/events/{{event?.event_img}} " alt=""> -->
+
+  <div class="card card-style" style="width: 18rem;">
+    <img src="./../../../../assets/img/events/{{event?.event_img}}" class="card-img-top" style="height: 350px;" alt="image">
+    <div class="card-body">
+      <h5 class="card-title">Event {{event?.id}} </h5>
+      <p class="card-text">Date : {{event?.event_date}} </p>
+      <div style="display: flex;gap: 15px;">
+      <a href="#" class="btn btn-primary">Edit</a>
+      <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+    </div>
+  </div>
+</div>
