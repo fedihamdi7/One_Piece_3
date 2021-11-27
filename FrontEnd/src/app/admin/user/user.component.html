@@ -3,23 +3,24 @@
     <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">#</th>
+           
             <th scope="col">name</th>
             <th scope="col">email</th>
             <th scope="col">type</th>
+            <th scope="col">operations</th>
           </tr>
         </thead>
        
         <tbody>
-            <div class="col" *ngFor="let user of users">
-          <tr>
+          
+          <tr *ngFor="let user of users">
             <th scope="row">{{user.name}}</th>
             <td>{{user.email}}</td>
             <td>{{user.type}}</td>
-            <td><button type="button" routerLink="{{user.id}}">show more</button></td>
+            <td><button type="button" class="btn-info"  routerLink="{{user.id}}">show more</button></td>
           </tr>
          
-        </div>
+       
         </tbody>
       </table>
 </div>
