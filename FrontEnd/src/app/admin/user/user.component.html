@@ -1,1 +1,28 @@
-<p>user works!</p>
+<app-admin></app-admin>
+<div style="margin-left: 18%;margin-top: 3%;">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">type</th>
+          </tr>
+        </thead>
+       
+        <tbody>
+            <div class="col" *ngFor="let user of users">
+          <tr>
+            <th scope="row">{{user.name}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.type}}</td>
+            <td><button type="button" routerLink="{{user.id}}">show more</button></td>
+          </tr>
+         
+        </div>
+        </tbody>
+        
+
+       
+      </table>
+</div>
