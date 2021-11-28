@@ -1,0 +1,9 @@
+.table-margin{
+    margin-top: 8%;
+    margin-left: 5%;
+    width: 90%;
+}
+button{
+    background-color:rgba(131, 202, 235, 0.719);
+    color:grey;
+}
