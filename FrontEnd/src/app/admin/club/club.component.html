@@ -1,0 +1,22 @@
+<app-admin></app-admin>
+<div class="contenu">
+    <table class="table table-margin">
+      <thead class="table-primary">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">theme</th>
+            <th scope="col">about</th>
+          </tr>
+        </thead>
+       
+        <tbody>
+          <tr *ngFor="let club of clubslist">
+            <th scope="row">{{club.name}}</th>
+            <td>{{club.theme}}</td>
+            <td>{{club.about}}</td>
+            <td><a><button type="button" routerLink="{{club.id}}">More Details</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
