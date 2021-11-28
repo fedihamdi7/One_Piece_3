@@ -1,4 +1,21 @@
 <app-dash-respo></app-dash-respo>
 <div class="contenu">
-<p>team works!</p>
+  <table class="table table-margin">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teamsList">
+        <th scope="row">{{team.id}} </th>
+        <td>{{team.team_name}}</td>
+        <td>{{team.team_titre}}</td>
+        <td> <a> <button  type="button" routerLink="{{team.id}}" class="btn btn-info"> Details </button> </a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

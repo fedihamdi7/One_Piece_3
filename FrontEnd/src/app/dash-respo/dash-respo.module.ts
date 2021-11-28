@@ -6,6 +6,7 @@ import { DashRespoComponent } from './dash-respo.component';
 import { EventsComponent } from './events/events.component';
 import { TeamComponent } from './team/team.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { TeamDetailsComponent } from './team/team-details/team-details.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
     DashRespoComponent,
     EventsComponent,
     TeamComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    TeamDetailsComponent
   ],
   imports: [
     CommonModule,
