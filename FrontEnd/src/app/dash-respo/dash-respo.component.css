@@ -4,6 +4,12 @@
 }
 /* SIDE BAR  */
 
+.activerouteLi{
+  background-color: #ffffff;}
+.activerouteA{
+  color: #000 !important;
+}
+
 .side-bar{
   display: flex;
   flex-direction: column;

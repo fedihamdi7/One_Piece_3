@@ -7,9 +7,13 @@
 
   <div class="navigation">
       <ul>
-          <li> <a routerLink="/dash-respo/events"> Events </a> </li>
+          <li [routerLinkActive]="'activerouteLi'"> <a [routerLinkActive]="'activerouteA'" routerLink="/dash-respo/events"> Events </a> </li>
           <li> <a routerLink="/dash-respo/team"> Team </a> </li>
 
       </ul>
   </div>
+</div>
+
+<router-outlet></router-outlet>
+
 </div>
