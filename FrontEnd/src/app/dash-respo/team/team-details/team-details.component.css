@@ -3,3 +3,16 @@
   left: 60vh;
   margin-top: 6%;
 }
+.socialMedia
+{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+
+
+}
+.image{
+  width: 35px;
+  height: 35px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}

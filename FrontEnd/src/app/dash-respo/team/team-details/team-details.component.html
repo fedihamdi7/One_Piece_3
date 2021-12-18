@@ -7,6 +7,12 @@
     <div class="card-body">
       <h5 class="card-title"> Name : {{team?.team_name}} </h5>
       <p class="card-text">  Titre : {{team?.team_titre}} </p>
+      <div class="socialMedia">
+      <a href="{{team?.team_fb}}"><img src="./../../../../assets/img/facebook.png" alt="" class="image"></a>
+      <a href="{{team?.team_insta}}"><img src="./../../../../assets/img/insta.jpg" alt="" class="image"></a>
+      <a href="{{team?.team_twitter}}"><img src="./../../../../assets/img/twitter-icon.svg" alt="" class="image"></a>
+      <a href="{{team?.team_linkedin}}"><img src="./../../../../assets/img/linkedin.png" alt="" class="image"></a>
+      </div>
       <div style="display: flex;gap: 15px;">
       <a href="#" class="btn btn-primary">Edit</a>
       <a href="#" class="btn btn-danger">Delete</a>

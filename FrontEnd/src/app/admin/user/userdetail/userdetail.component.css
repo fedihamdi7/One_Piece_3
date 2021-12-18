@@ -10,7 +10,7 @@
     color: #fff;
     width: 350px;
     border-radius: 10px;
-    background: linear-gradient(145deg, #1d2434, #ced2da);
+    background: linear-gradient(145deg, #1d2434,  #1d2434);
     box-shadow: 20px 20px 60px #eae7eb, -20px -20px 60px #fffeff;
     border: none
 }
