@@ -1,1 +1,39 @@
-<p>auth works!</p>
+<div class="container" id="container" #container>
+  <div class="form-container sign-up-container">
+    <form (submit)="onSignUpSubmit()" #signup="ngForm">
+      <h1>Create Account</h1>
+      <span>or use your email for registration</span>
+      <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required />
+      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" email required />
+      <span class="warning" *ngIf="signup.form.controls.email.invalid && signup.form.controls.email.touched">Please enter valide email</span>
+      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      <button type="submit" [disabled]="!signup.valid">Sign Up</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form (ngSubmit)="onSigninSubmit()" #signin="ngForm">
+      <h1>Sign in</h1>
+      <span>or use your account</span>
+      <input type="email" placeholder="Email" ngModel name="email" email required/>
+      <span class="warning" *ngIf="signin.form.controls.email.invalid && signin.touched">Please enter valide email</span>
+      <input type="password" placeholder="Password" ngModel name="password" required />
+      <span class="warning" *ngIf="signin.form.controls.password.invalid && signin.form.controls.password.touched">Password must be 8 caractere</span>
+
+      <button type="submit" [disabled]="!signin.valid">Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn" #signIn>Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp" #signUp>Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
