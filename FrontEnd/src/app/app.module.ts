@@ -10,6 +10,7 @@ import { ClubComponent } from './club/club.component';
 import { DashAdminComponent } from './dash-admin/dash-admin.component';
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

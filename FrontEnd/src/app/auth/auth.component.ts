@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -13,7 +14,7 @@ export class AuthComponent implements OnInit {
   password:string;
 
   @ViewChild('signin') singInFrom:NgForm;
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,10 @@ export class AuthComponent implements OnInit {
   onSigninSubmit(){
     // console.log(this.email,this.password);
     console.log(this.singInFrom);
+    return this.http.get('http://localhost:3000/users/sender').pipe((res: any) => res).subscribe((res: any) => {
+      console.log(res);
+      });
+
 
   }
 
