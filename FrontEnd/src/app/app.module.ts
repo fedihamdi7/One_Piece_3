@@ -9,7 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ClubComponent } from './club/club.component';
 import { DashAdminComponent } from './dash-admin/dash-admin.component';
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

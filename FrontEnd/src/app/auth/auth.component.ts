@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -11,21 +11,28 @@ export class AuthComponent implements OnInit {
   name:string;
   email:string;
   password:string;
+  formSignUp:FormGroup;
 
   @ViewChild('signin') singInFrom:NgForm;
   constructor() { }
 
   ngOnInit(): void {
+    this.formSignUp= new FormGroup({
+      name: new FormControl(null,{validators:[Validators.required]}),
+      email: new FormControl(null,{validators:[Validators.required , Validators.email]}),
+      password: new FormControl(null,{validators:[Validators.required]})
+    });
+
   }
 
-  onSigninSubmit(){
-    // console.log(this.email,this.password);
-    console.log(this.singInFrom);
 
+
+  onSigninSubmit(){
+    console.log(this.singInFrom);
   }
 
   onSignUpSubmit(){
-    console.log(this.name,this.email,this.password);
+    console.log(this.formSignUp);
   }
 
 
