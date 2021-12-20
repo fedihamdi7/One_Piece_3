@@ -12,8 +12,8 @@ export class AuthComponent implements OnInit {
   email:string;
   password:string;
   formSignUp:FormGroup;
+  formLogin:FormGroup;
 
-  @ViewChild('signin') singInFrom:NgForm;
   constructor() { }
 
   ngOnInit(): void {
@@ -23,12 +23,17 @@ export class AuthComponent implements OnInit {
       password: new FormControl(null,{validators:[Validators.required]})
     });
 
+    this.formLogin= new FormGroup({
+      email: new FormControl(null,{validators:[Validators.required , Validators.email]}),
+      password: new FormControl(null,{validators:[Validators.required]})
+    });
+
   }
 
 
 
   onSigninSubmit(){
-    console.log(this.singInFrom);
+    console.log(this.formLogin);
   }
 
   onSignUpSubmit(){
