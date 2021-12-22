@@ -32,10 +32,10 @@
           </ul>
         </li> -->
 
-        <li class="nav-item">
+        <li class="nav-item toRight" *ngIf="!userIsAuthenticated">
           <a class="nav-link" routerLinkActive="ActiveLink" routerLink="/auth">Login/Signup</a>
         </li>
-        <li class="nav-item" style="cursor: pointer;">
+        <li class="nav-item toRight" style="cursor: pointer;" *ngIf="userIsAuthenticated">
           <a class="nav-link" (click)="onLogoutClick()">Logout</a>
         </li>
       </ul>

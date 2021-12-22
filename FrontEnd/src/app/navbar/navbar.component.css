@@ -8,3 +8,8 @@ ul li a {
   background-color: #464343ab;
     border-radius: 10px;
 }
+
+.toRight{
+  position: absolute;
+    right: 0;
+}
