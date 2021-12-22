@@ -2,11 +2,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
-<div class="main-container" style="margin-top: -5%;  background-color:rgb(219, 218, 218);" >
+<div class="main-container" style="margin-top: -5%;  background-color:rgb(219, 218, 218);" *ngFor="let club of clubsList">
     <div class="side-bar" style="height: 500%;">
         <div class="logo-club">
-            <img src="assets/img/ieee.jpeg" alt="">
-            <div class="club-name">IEEE</div>
+            <img src="./../../../assets/img/{{club.club_img}}" alt="">
+            <div class="club-name">{{club.name}}</div>
         </div>
 
         <div class="navigation">
@@ -20,12 +20,12 @@
         
     </div>
 
-    <div class="contenu">
+    <div class="contenu" >
         <div id="aboutus">
             
             <h1 class="title">About Us</h1>
             <div class="line-desc"></div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae quidem voluptate quos sunt aliquid laboriosam modi quibusdam, praesentium quaerat. Sequi fugiat velit, magnam odio porro tempore officiis consequuntur excepturi. Laboriosam quaerat assumenda voluptatibus cum iure.</p>
+            <p>{{club.about}}</p>
         
             <div class="news">
                 <img src="assets/img/tunivisions_post.jpg" alt="">
@@ -40,7 +40,7 @@
             <h1 class="title" >Events</h1>
                  
                  
-            <div class="events">
+            <div class="events"  >
               <!-- <h1 class="title-events">Latest Events</h1> -->
               <div class="wrapper">
                   <input type="radio" name="slide" id="one" checked>
@@ -48,22 +48,10 @@
                   <input type="radio" name="slide" id="three">
                   <input type="radio" name="slide" id="four">
                   <input type="radio" name="slide" id="five">
-                  <div class="img img-1">
-                  <img src="assets/img/4c(1).jpg" alt="">
+                  <div class="img img-1" *ngFor="let event of club.events">
+                  <img src="./../../../assets/img/events/{{event.event_img}}" alt="">
                   </div>
-                  <div class="img img-2">
-                    <img src="assets/img/4c(2).jpg" alt="">
-            
-                  </div>
-                  <div class="img img-3">
-                    <img src="assets/img/4c(3).jpg" alt="">
-                  </div>
-                  <div class="img img-4">
-                    <img src="assets/img/4c(4).jpg" alt="">
-                  </div>
-                  <div class="img img-5">
-                    <img src="assets/img/4c(5).jpg" alt="">
-                  </div>
+                 
                   <div class="sliders">
                     <label for="one" class="one"></label>
                     <label for="two" class="two"></label>
@@ -79,67 +67,28 @@
             <h1 class="title">Teams</h1>
             <div class="line-desc"></div>
            <div id="teams-cards">
-                <div class="container">
-                    <div class="image">
-                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                <div class="container" *ngFor="let team of club.team">
+                    <div class="image" >
+                    <img src="./../../../assets/img/{{team.team_img}}">
                     </div>
                     <div class="content">
                     <div class="info">
                         <h2>
-                            Andrew Neil
+                          {{team.team_name}}
                         </h2>
-                        <span>Web Developer</span>
+                        <span> {{team.team_titre}}</span>
                     </div>
                     </div>
                  
                     <ul>
-                    <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-facebook"></i></a></li>
-                    <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-linkedin"></i></a></li>
-                    <li><a href="#"><i  style="font-size:53px;color: #1d2434;" class="bi bi-github"></i></a></li>
-                    <li><a href="#"><i  style="font-size:50px;color: #1d2434;" class="bi bi-instagram"></i></a></li>
+                    <li><a href="{{team.team_fb}}"><i  style="font-size:52px;color: #1d2434;" class="bi bi-facebook"></i></a></li>
+                    <li><a href="{{team.team_insta}}"><i  style="font-size:52px;color: #1d2434;" class="bi bi-linkedin"></i></a></li>
+                    <li><a href="{{team.team_linkedin}}"><i  style="font-size:53px;color: #1d2434;" class="bi bi-github"></i></a></li>
+                    <li><a href="{{team.team_twitter}}"><i  style="font-size:50px;color: #1d2434;" class="bi bi-instagram"></i></a></li>
                   
                     </ul>
                 </div>
-                <div class="container">
-                    <div class="image">
-                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
-                    </div>
-                    <div class="content">
-                    <div class="info">
-                        <h2>
-                            Andrew Neil
-                        </h2>
-                        <span>Web Developer</span>
-                    </div>
-                    </div>
-                    <ul>
-                      <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-facebook"></i></a></li>
-                      <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-linkedin"></i></a></li>
-                      <li><a href="#"><i  style="font-size:53px;color: #1d2434;" class="bi bi-github"></i></a></li>
-                      <li><a href="#"><i  style="font-size:50px;color: #1d2434;" class="bi bi-instagram"></i></a></li>
-                    </ul>
-                </div>
-                <div class="container">
-                    <div class="image">
-                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
-                    </div>
-                    <div class="content">
-                    <div class="info">
-                        <h2>
-                            Andrew Neil
-                        </h2>
-                        <span>Web Developer</span>
-                    </div>
-                    </div>
-                    <ul>
-                      <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-facebook"></i></a></li>
-                    <li><a href="#"><i  style="font-size:52px;color: #1d2434;" class="bi bi-linkedin"></i></a></li>
-                    <li><a href="#"><i  style="font-size:53px;color: #1d2434;" class="bi bi-github"></i></a></li>
-                    <li><a href="#"><i  style="font-size:50px;color: #1d2434;" class="bi bi-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+              
 
         <div id="ligne"></div>
         <div id="contactus">
