@@ -12,9 +12,7 @@ export class AuthService {
   API_URL: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) { }
 
   signup(user: User): Observable<any> {
 
@@ -22,6 +20,14 @@ export class AuthService {
         catchError(this.handleError)
     )
   }
+
+  login(user: User): Observable<any> {
+    
+    return this.httpClient.post(`${this.API_URL}/auth/login`, user,{headers:this.headers}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let msg = '';

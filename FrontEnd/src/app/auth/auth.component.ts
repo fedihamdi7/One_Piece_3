@@ -36,7 +36,13 @@ export class AuthComponent implements OnInit {
 
 
   onSigninSubmit(){
-    console.log(this.formLogin);
+    this.authService.login(this.formLogin.value).subscribe(res => {
+      if(res.status == 200) {
+        this.router.navigate(['/']);
+      }else{
+        this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger',timeout:4000});
+      }
+    });
   }
 
   onSignUpSubmit(){
