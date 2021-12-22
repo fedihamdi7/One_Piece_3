@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -13,7 +14,7 @@ export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   authToken:any;
   user:any;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient , private router:Router) { }
 
   signup(user: User): Observable<any> {
 
@@ -30,7 +31,16 @@ export class AuthService {
     headers.append('Content-Type','application/json');
     return this.httpClient.post('http://localhost:3000/api/auth/login',user,{headers:headers}).pipe((res: any) => res);
   }
-
+  get isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('id_token');
+    return (authToken !== null) ? true : false;
+  }
+  logout(){
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+    this.router.navigate(['/auth']);
+  }
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
