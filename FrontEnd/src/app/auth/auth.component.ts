@@ -37,7 +37,10 @@ export class AuthComponent implements OnInit {
 
   onSigninSubmit(){
     this.authService.login(this.formLogin.value).subscribe(res => {
+      console.log(res);
+
       if(res.status == 200) {
+        this.authService.storeUserData(res.token,res.user);
         this.router.navigate(['/']);
       }else{
         this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger',timeout:4000});
@@ -56,6 +59,7 @@ export class AuthComponent implements OnInit {
       }
     });
   }
+
 
 
   // animation

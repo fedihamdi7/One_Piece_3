@@ -11,7 +11,8 @@ export class AuthService {
 
   API_URL: string = 'http://localhost:3000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+  authToken:any;
+  user:any;
   constructor(private httpClient: HttpClient) { }
 
   signup(user: User): Observable<any> {
@@ -28,6 +29,17 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
     return this.httpClient.post('http://localhost:3000/api/auth/login',user,{headers:headers}).pipe((res: any) => res);
+  }
+
+  loadToken(){
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+  storeUserData(token:string,user:any){
+    this.authToken = token;
+    this.user = user;
+    localStorage.setItem('id_token',token);
+    localStorage.setItem('user',JSON.stringify(user));
   }
 
 
