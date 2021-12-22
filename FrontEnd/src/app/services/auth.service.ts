@@ -41,9 +41,12 @@ export class AuthService {
         this.router.navigate(['/']);
         this.authStatusListener.next(true);
       }else{
-        this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger',timeout:4000});
+        this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger'});
       }
-    });
+    },err => {
+      this.flashMessagesService.show('Email or Password Incorrect ! ',{cssClass:'alert-danger'});
+    }
+      );
   }
 
   getAuthStatusListener() {
