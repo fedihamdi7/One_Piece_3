@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
 
 import { ClubComponent } from './club/club.component';
-import { DashAdminComponent } from './dash-admin/dash-admin.component';
+
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     AuthComponent,
     ClubComponent,
-    DashAdminComponent,
     AllClubsComponent,
 
   ],

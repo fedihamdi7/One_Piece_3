@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { AuthComponent } from './auth/auth.component';
 import { ClubComponent } from './club/club.component';
-import { DashAdminComponent } from './dash-admin/dash-admin.component';
-import { DashRespoComponent } from './dash-respo/dash-respo.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
