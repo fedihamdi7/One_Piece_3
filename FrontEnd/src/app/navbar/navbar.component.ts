@@ -16,9 +16,14 @@ export class NavbarComponent implements OnInit ,OnDestroy {
     private flashMessageService : FlashMessagesService) { }
 
     ngOnInit(): void {
+      const token = localStorage.getItem('id_token');
+      if(token){
+        this.userIsAuthenticated=true;
+      }
       this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
         this.userIsAuthenticated= isAuthenticated;
       });
+      console.log(this.userIsAuthenticated);
     }
     ngOnDestroy(): void {
       this.authListenerSubs.unsubscribe();
