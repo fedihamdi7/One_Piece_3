@@ -22,10 +22,12 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-    
-    return this.httpClient.post(`${this.API_URL}/auth/login`, user,{headers:this.headers}).pipe(
-      catchError(this.handleError)
-    )
+    //    return this.httpClient.post(`${this.API_URL}/auth/login`, user,{headers:this.headers}).pipe(
+    //   catchError(this.handleError)
+    // )
+    let headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return this.httpClient.post('http://localhost:3000/api/auth/login',user,{headers:headers}).pipe((res: any) => res);
   }
 
 
