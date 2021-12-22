@@ -221,3 +221,16 @@ input {
 	width: 40px;
 }
 
+
+@Keyframes flashfade {
+  0% {opacity:0;}
+  20% {opacity:1}
+  80% {opacity:1}
+  100% {opacity:0}
+  }
+  .flashfade {
+  animation: flashfade 5s;
+  position: absolute;
+  left: 40vw;
+  z-index: 1000;
+  }

@@ -45,8 +45,7 @@ export class AuthComponent implements OnInit {
         this.formSignUp.reset();
         let element: HTMLElement = document.getElementById('signIn') as HTMLElement;
         element.click();
-        // this.router.navigate(['/auth']);
-        this.flashMessagesService.show('You are now registered and can log in', { cssClass: 'alert-success', timeout: 3000 });
+        this.flashMessagesService.show('You are now registered and can log in', { cssClass: 'alert-success'});
 
       }
     });
