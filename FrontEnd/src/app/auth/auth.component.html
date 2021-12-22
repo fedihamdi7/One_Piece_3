@@ -8,6 +8,9 @@
       <span class="warning" *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">Please
         enter valide email</span>
       <input type="password" placeholder="Password"name="password" formControlName="password"/>
+      <span class="warning"
+      *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched">Password must be 6
+      caractere</span>
       <button type="submit" [disabled]="!formSignUp.valid">Sign Up</button>
     </form>
   </div>

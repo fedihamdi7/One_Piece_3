@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
     this.formSignUp= new FormGroup({
       name: new FormControl(null,{validators:[Validators.required]}),
       email: new FormControl(null,{validators:[Validators.required , Validators.email]}),
-      password: new FormControl(null,{validators:[Validators.required]})
+      password: new FormControl(null,{validators:[Validators.required, Validators.minLength(6)]})
     });
 
     this.formLogin= new FormGroup({
