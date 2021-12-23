@@ -34,7 +34,11 @@ export class ManagerService {
       const newEvent:Event = {event_id : event.event_id , event_name : event.event_name , event_date : event.event_date , event_img : event.event_img};
       this.http.put(`http://localhost:3000/api/manager/${event.event_id}/events`,newEvent)
       .subscribe(res=>{
-        console.log(res);
+        const updatedEvents = [...this.Events];
+        const oldEventIndex = updatedEvents.findIndex(e=>e.event_id === event.event_id);
+        updatedEvents[oldEventIndex] = newEvent;
+        this.Events = updatedEvents;
+        this.eventUpdated.next([...this.Events]);
 
       });
     }
