@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
-const userRouter = require('./routes/user');
+const authRouter = require('./routes/auth');
 
 //connecting to database
 mongoose.connect('mongodb://localhost:27017/OnePiece', {
@@ -20,6 +20,6 @@ app.use(bodyParser.json());
 // CORS Middleware
 app.use(cors());
 
-app.use('/api/auth', userRouter);
+app.use('/api/auth', authRouter);
 
 module.exports = app;
