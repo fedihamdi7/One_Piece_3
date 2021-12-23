@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 const authRouter = require('./routes/auth');
-
+const homeRouter = require('./routes/home');
 //connecting to database
 mongoose.connect('mongodb://localhost:27017/OnePiece', {
     useNewUrlParser: true,
@@ -21,5 +21,5 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/auth', authRouter);
-
+app.use('/api/home',homeRouter);
 module.exports = app;
