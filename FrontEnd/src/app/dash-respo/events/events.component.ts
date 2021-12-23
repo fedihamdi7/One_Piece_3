@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
 import { Event } from './event.model';
 import { events } from './events-list';
@@ -8,16 +9,29 @@ import { events } from './events-list';
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent implements OnInit , OnDestroy {
 
-  public eventsList : Event[];
+  eventsList : Event[] = [];
+  private eventSub : Subscription;
   constructor(private managerService : ManagerService) { }
-  managerId = localStorage.getItem('user');
-  ngOnInit(): void {
-    this.managerService.getEvents(JSON.parse(this.managerId).club_id).subscribe((res)=>{
-      this.eventsList = res[0].events;
-    });
 
+
+  managerId = localStorage.getItem('user');
+
+  ngOnInit(): void {
+    this.managerService.getEvents(JSON.parse(this.managerId).club_id);
+
+    this.eventSub = this.managerService.getEventUpdateListener()
+    .subscribe((events:any)=>{
+      this.eventsList = events;
+      console.log(this.eventsList);
+
+    });
+  }
+
+
+  ngOnDestroy(): void {
+    this.eventSub.unsubscribe();
   }
 
 }
