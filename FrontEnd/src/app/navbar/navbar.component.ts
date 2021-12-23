@@ -23,15 +23,11 @@ export class NavbarComponent implements OnInit ,OnDestroy {
       this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
         this.userIsAuthenticated= isAuthenticated;
       });
-      console.log(this.userIsAuthenticated);
     }
     ngOnDestroy(): void {
       this.authListenerSubs.unsubscribe();
     }
   onLogoutClick() {
     this.authService.logout();
-    this.flashMessageService.show('You are logged out', {
-       cssClass: 'alert-success', timeout: 1000
-   });
-}
+  }
 }
