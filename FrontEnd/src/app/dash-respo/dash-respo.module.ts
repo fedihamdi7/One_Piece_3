@@ -7,6 +7,7 @@ import { EventsComponent } from './events/events.component';
 import { TeamComponent } from './team/team.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { TeamDetailsComponent } from './team/team-details/team-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +16,12 @@ import { TeamDetailsComponent } from './team/team-details/team-details.component
     EventsComponent,
     TeamComponent,
     EventDetailsComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
   ],
   imports: [
     CommonModule,
-    DashRespoRoutingModule
+    DashRespoRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class DashRespoModule { }

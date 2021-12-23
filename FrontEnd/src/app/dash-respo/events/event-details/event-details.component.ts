@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
@@ -15,11 +16,15 @@ export class EventDetailsComponent implements OnInit {
 
   public event?: Event;
   public eventsList : Event[]= [];
+  public showEventEditForm: boolean = false;
+  formEdit:FormGroup;
+
 
   constructor(private route: ActivatedRoute,private managerService : ManagerService) { }
   managerId = localStorage.getItem('user');
 
   ngOnInit(): void {
+
     this.managerService.getEvents(JSON.parse(this.managerId).club_id);
      this.eventSub = this.managerService.getEventUpdateListener()
     .subscribe((res:any)=>{
@@ -27,10 +32,23 @@ export class EventDetailsComponent implements OnInit {
        this.route.paramMap.subscribe(params => {
         const eventId = params.get("id");
         this.event = this.eventsList.find(e => e.event_id == eventId);
+        this.formEdit = new FormGroup({
+          event_id: new FormControl(this.event.event_id,{validators:[Validators.required]}),
+          event_name: new FormControl(this.event.event_name,{validators:[Validators.required]}),
+          event_date: new FormControl(this.event.event_date,{validators:[Validators.required]}),
+          event_img: new FormControl(null,{validators:[Validators.required]})
+        });
 
       });
-
     });
+
+
+  }
+  oneEditSubmit() {
+    this.managerService.editEvent(this.formEdit.value);
+  }
+  showEditForm(){
+    this.showEventEditForm = !this.showEventEditForm;
   }
 
 }

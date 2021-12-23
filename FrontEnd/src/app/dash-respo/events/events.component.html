@@ -4,6 +4,7 @@
     <thead class="table-primary">
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Name</th>
         <th scope="col">Date</th>
         <th scope="col">Details</th>
       </tr>
@@ -11,6 +12,7 @@
     <tbody>
       <tr *ngFor="let event of eventsList; let i = index">
         <th scope="row">{{event.event_id}} </th>
+        <td>{{event.event_name}}</td>
         <td>{{event.event_date}}</td>
         <td> <a> <button  type="button" routerLink="{{event.event_id}}" class="btn btn-info"> Details </button> </a></td>
       </tr>

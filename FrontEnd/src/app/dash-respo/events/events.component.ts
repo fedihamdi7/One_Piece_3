@@ -24,8 +24,6 @@ export class EventsComponent implements OnInit , OnDestroy {
     this.eventSub = this.managerService.getEventUpdateListener()
     .subscribe((events:any)=>{
       this.eventsList = events;
-      console.log(this.eventsList);
-
     });
   }
 
