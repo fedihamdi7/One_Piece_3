@@ -24,8 +24,8 @@ import { AllClubsDetailsComponent } from './all-clubs/all-clubs-details/all-club
     AuthComponent,
     ClubComponent,
     AllClubsComponent,
-    HomeComponent
-    AllClubsDetailsComponent,
+    HomeComponent,
+    AllClubsDetailsComponent
 
   ],
   imports: [
