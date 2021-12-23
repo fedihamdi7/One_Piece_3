@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Event, Home } from './home.model';
-import { homes } from './home-list';
+import { Club, Event, Home } from './home.model';
+import { clubsList, homes } from './home-list';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,13 +9,13 @@ import { homes } from './home-list';
 })
 export class HomeComponent implements OnInit {
   public events : Event[] = homes;
+  public clubs:Club[] = clubsList;
 
-  // public mokka= homes;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.events);
+
 
   }
 

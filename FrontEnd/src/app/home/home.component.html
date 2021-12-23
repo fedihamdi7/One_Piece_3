@@ -88,66 +88,29 @@
         </div>
     </div>
 
-    <div class="clubs">
+    <div class="clubs" >
         <h1 class="title-clubs">Clubs</h1>
         <div class="slider owl-carousel">
-            <div class="card">
+            <div class="card" *ngFor="let club of clubs">
                <div class="img">
-                  <img src="../../assets/img/ieee.jpeg" alt="">
+                  <img src="../../assets/img/{{club.club_img}}" alt="">
                </div>
                <div class="content">
                   <div class="title">
-                     Briana Tozour
+                     {{club.name}}
                   </div>
                   <div class="sub-title">
                      Graphic Designer
                   </div>
                   <p>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-                  </p>
+                    {{club.about}}
+                                   </p>
                   <div class="btn">
                      <button>Read more</button>
                   </div>
                </div>
             </div>
-            <div class="card">
-               <div class="img">
-                  <img src="../../assets/img/4c.jpg" alt="">
-               </div>
-               <div class="content">
-                  <div class="title">
-                     Briana Tozour
-                  </div>
-                  <div class="sub-title">
-                     Graphic Designer
-                  </div>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-                  </p>
-                  <div class="btn">
-                     <button>Read more</button>
-                  </div>
-               </div>
-            </div>
-            <div class="card">
-               <div class="img">
-                  <img src="../../assets/img/4c.jpg" alt="">
-               </div>
-               <div class="content">
-                  <div class="title">
-                     Briana Tozour
-                  </div>
-                  <div class="sub-title">
-                     Graphic Designer
-                  </div>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.
-                  </p>
-                  <div class="btn">
-                     <button>Read more</button>
-                  </div>
-               </div>
-            </div>
+
 
 
          </div>

@@ -5,7 +5,7 @@ export interface Event{
     event_img: string;
 
 }
-interface Club{
+export interface Club{
   id: string;
   name:string;
   club_img:string;
