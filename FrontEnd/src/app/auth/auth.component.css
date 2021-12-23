@@ -223,7 +223,7 @@ input {
 
 
 @Keyframes flashfade {
-  0% {opacity:0;}
+  0% {opacity:1;}
   20% {opacity:1}
   80% {opacity:1}
   100% {opacity:0}
@@ -231,6 +231,7 @@ input {
   .flashfade {
   animation: flashfade 5s;
   position: absolute;
+  top: 15%;
   left: 40vw;
   z-index: 1000;
   }

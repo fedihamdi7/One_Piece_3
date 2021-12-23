@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Observable, Subject, throwError } from 'rxjs';
 
 import { User } from '../admin/user/user.model';
 @Injectable({
@@ -14,31 +15,49 @@ export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   authToken:any;
   user:any;
-  constructor(private httpClient: HttpClient , private router:Router) { }
+  private authStatusListener = new Subject<boolean>();
+  constructor(private httpClient: HttpClient ,private router:Router,private flashMessagesService : FlashMessagesService) { }
 
-  signup(user: User): Observable<any> {
+  signup(user: User,form:FormGroup) {
 
-    return this.httpClient.post(`${this.API_URL}/auth/signup`, user).pipe(
-        catchError(this.handleError)
-    )
+    this.httpClient.post<any>(`${this.API_URL}/auth/signup`, user).subscribe( (res):any =>{
+      if(res.status == 201) {
+        form.reset();
+        let element: HTMLElement = document.getElementById('signIn') as HTMLElement;
+        element.click();
+        this.flashMessagesService.show('You are now registered and can log in', { cssClass: 'alert-success'});
+      }
+    }
+
+    );
   }
 
-  login(user: User): Observable<any> {
-    //    return this.httpClient.post(`${this.API_URL}/auth/login`, user,{headers:this.headers}).pipe(
-    //   catchError(this.handleError)
-    // )
+  login(user: User){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
-    return this.httpClient.post('http://localhost:3000/api/auth/login',user,{headers:headers}).pipe((res: any) => res);
+    this.httpClient.post<{status,token,user}>('http://localhost:3000/api/auth/login',user,{headers:headers}).subscribe(res => {
+      if(res.status == 200) {
+        this.storeUserData(res.token,res.user);
+        this.router.navigate(['/']);
+        this.authStatusListener.next(true);
+      }else{
+        this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger'});
+      }
+    },err => {
+      this.flashMessagesService.show('Email or Password Incorrect ! ',{cssClass:'alert-danger'});
+    }
+      );
   }
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('id_token');
-    return (authToken !== null) ? true : false;
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
   }
+
   logout(){
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    this.authStatusListener.next(false);
     this.router.navigate(['/auth']);
   }
   loadToken(){

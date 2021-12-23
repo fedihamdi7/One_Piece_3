@@ -11,7 +11,10 @@ import { ClubComponent } from './club/club.component';
 
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HomeComponent } from './home/home.component';
+import { AllClubsDetailsComponent } from './all-clubs/all-clubs-details/all-clubs-details.component';
+
 
 
 @NgModule({
@@ -22,6 +25,7 @@ import { HomeComponent } from './home/home.component';
     ClubComponent,
     AllClubsComponent,
     HomeComponent
+    AllClubsDetailsComponent,
 
   ],
   imports: [

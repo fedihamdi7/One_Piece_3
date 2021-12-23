@@ -36,28 +36,11 @@ export class AuthComponent implements OnInit {
 
 
   onSigninSubmit(){
-    this.authService.login(this.formLogin.value).subscribe(res => {
-      console.log(res);
-
-      if(res.status == 200) {
-        this.authService.storeUserData(res.token,res.user);
-        this.router.navigate(['/']);
-      }else{
-        this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger',timeout:4000});
-      }
-    });
+    this.authService.login(this.formLogin.value);
   }
 
   onSignUpSubmit(){
-    this.authService.signup(this.formSignUp.value).subscribe(res => {
-      if(res.status == 201) {
-        this.formSignUp.reset();
-        let element: HTMLElement = document.getElementById('signIn') as HTMLElement;
-        element.click();
-        this.flashMessagesService.show('You are now registered and can log in', { cssClass: 'alert-success'});
-
-      }
-    });
+    this.authService.signup(this.formSignUp.value,this.formSignUp);
   }
 
 
