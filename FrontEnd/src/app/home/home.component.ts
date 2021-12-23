@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getLatestEvents().subscribe(
       (resultat) => {
         this.fetchedEvents = resultat;
-        console.log(this.fetchedEvents);
+        // console.log(this.fetchedEvents);
 
       }
     );
