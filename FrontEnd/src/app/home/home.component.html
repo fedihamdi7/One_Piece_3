@@ -17,7 +17,6 @@
                 </p>
             </div>
     </div>
-    <div *ngFor="let item of events"> {{item}} </div>
     <div class="events">
         <h1 class="title-events">Latest Events</h1>
         <div class="wrapper">
@@ -26,8 +25,8 @@
             <input type="radio" name="slide" id="three">
             <input type="radio" name="slide" id="four">
             <input type="radio" name="slide" id="five">
-            <div class="img img-1" >
-            <img src="../../assets/img/4c(1).jpg" alt="">
+            <div class="img img-{{i+1}}" *ngFor="let item of events; let i = index;">
+            <img src="../../assets/img/events/{{item.event_img}}" alt="">
             </div>
             <!-- <div class="img img-2">
               <img src="../../assets/img/4c(2).jpg" alt="">
