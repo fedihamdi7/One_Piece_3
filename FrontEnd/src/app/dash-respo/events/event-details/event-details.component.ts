@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ManagerService } from 'src/app/services/manager.service';
 import { Event } from '../event.model';
-import { events } from '../events-list';
+;
 
 @Component({
   selector: 'app-event-details',
@@ -11,15 +12,21 @@ import { events } from '../events-list';
 export class EventDetailsComponent implements OnInit {
 
   public event?: Event;
+  public eventsList : Event[];
 
-  constructor(private route: ActivatedRoute) { }
-
+  constructor(private route: ActivatedRoute,private managerService : ManagerService) { }
+  managerId = localStorage.getItem('user');
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const eventId = params.get("id");
-      this.event = events.find(e => e.id == eventId);
-      //this.event = events.filter(event => event.id === eventId)[0];
+    this.managerService.getEvents(JSON.parse(this.managerId).club_id).subscribe((res)=>{
+      this.eventsList = res[0].events;
+      this.route.paramMap.subscribe(params => {
+        const eventId = params.get("id");
+        this.event = this.eventsList.find(e => e.event_id == eventId);
+
+      });
     });
+
+
   }
 
 }

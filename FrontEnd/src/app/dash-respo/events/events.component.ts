@@ -10,14 +10,12 @@ import { events } from './events-list';
 })
 export class EventsComponent implements OnInit {
 
-  public eventsList : Event[] = events;
+  public eventsList : Event[];
   constructor(private managerService : ManagerService) { }
   managerId = localStorage.getItem('user');
   ngOnInit(): void {
     this.managerService.getEvents(JSON.parse(this.managerId).club_id).subscribe((res)=>{
       this.eventsList = res[0].events;
-      console.log(res[0].events);
-
     });
 
   }
