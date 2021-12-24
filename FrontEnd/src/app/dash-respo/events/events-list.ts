@@ -1,6 +1,6 @@
-import { Event } from "./event.model";
+import { EventType } from "./event.model";
 
-export const events : Event[] = [
+export const events : EventType[] = [
 
   {
     event_id: "1",

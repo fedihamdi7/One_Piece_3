@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
-import { Event } from './event.model';
+import { EventType } from './event.model';
 import { events } from './events-list';
 
 @Component({
@@ -11,7 +11,7 @@ import { events } from './events-list';
 })
 export class EventsComponent implements OnInit , OnDestroy {
 
-  eventsList : Event[] = [];
+  eventsList : EventType[] = [];
   private eventSub : Subscription;
   constructor(private managerService : ManagerService) { }
 
