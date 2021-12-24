@@ -13,7 +13,10 @@ export class HomeService {
 // http://localhost:3000/api/home/get
 
   getLatestEvents(){
-    return this.http.get<{status,data}>(`${this.API_URL}/getLatestEvents`);
+    return this.http.get<any>(`${this.API_URL}/getLatestEvents`);
+  }
+  getClub(){
+    return this.http.get<any>(`${this.API_URL}/getClub`);
   }
 
 }
