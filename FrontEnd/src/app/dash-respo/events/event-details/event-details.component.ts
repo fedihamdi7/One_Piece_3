@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
 import { EventType } from '../event.model';
@@ -20,7 +20,7 @@ export class EventDetailsComponent implements OnInit {
   formEdit:FormGroup;
   imagePreview:string;
 
-  constructor(private route: ActivatedRoute,private managerService : ManagerService) { }
+  constructor(private route: ActivatedRoute,private managerService : ManagerService, private router:Router) { }
   managerId = localStorage.getItem('user');
 
   ngOnInit(): void {
@@ -60,6 +60,11 @@ export class EventDetailsComponent implements OnInit {
   }
   showEditForm(){
     this.showEventEditForm = !this.showEventEditForm;
+  }
+
+  async onDeleteEvent(){
+   await this.managerService.deleteEvent(this.event.event_id);
+   this.router.navigate(['dash-respo/events']);
   }
 
 }

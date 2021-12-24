@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
 import { EventType } from './event.model';
@@ -14,7 +15,7 @@ export class EventsComponent implements OnInit , OnDestroy {
 
   eventsList : EventType[] = [];
   private eventSub : Subscription;
-  constructor(private managerService : ManagerService) { }
+  constructor(private managerService : ManagerService, private router:Router) { }
 
   imagePreview:string;
   formAdd:FormGroup;
@@ -47,10 +48,10 @@ export class EventsComponent implements OnInit , OnDestroy {
     reader.readAsDataURL(file);
 
   }
-  onAddSubmit(){
-
-
-    this.managerService.addEvent(this.formAdd.value);
+  async onAddSubmit(){
+    await this.managerService.addEvent(this.formAdd.value);
+    this.showAddEventForm = false;
+    this.router.navigate(['dash-respo/events']);
   }
 
 

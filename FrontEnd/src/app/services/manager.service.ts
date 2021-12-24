@@ -71,4 +71,15 @@ export class ManagerService {
     //   });
     // }
 
+    deleteEvent(id:string){
+      this.http.delete(`http://localhost:3000/api/manager/${id}/events`)
+      .subscribe(res=>{
+        const updatedEvents = this.Events.filter(e=>e.event_id !== id);
+        this.Events = updatedEvents;
+        this.eventUpdated.next([...this.Events]);
+
+      });
+    }
+
+
 }

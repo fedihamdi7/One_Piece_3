@@ -7,7 +7,7 @@
       <p class="card-text">Date : {{event?.event_date}} </p>
       <div style="display: flex;gap: 15px;">
       <a  class="btn btn-primary" (click)="showEditForm()">Edit</a>
-      <a  class="btn btn-danger">Delete</a>
+      <a  class="btn btn-danger" (click)="onDeleteEvent()" >Delete</a>
     </div>
     </div>
   </div>
