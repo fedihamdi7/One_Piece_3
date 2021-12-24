@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ManagerService } from 'src/app/services/manager.service';
-import { Event } from '../event.model';
+import { EventType } from '../event.model';
 ;
 
 @Component({
@@ -14,11 +14,11 @@ import { Event } from '../event.model';
 export class EventDetailsComponent implements OnInit {
   private eventSub : Subscription;
 
-  public event?: Event;
-  public eventsList : Event[]= [];
+  public event?: EventType;
+  public eventsList : EventType[]= [];
   public showEventEditForm: boolean = false;
   formEdit:FormGroup;
-
+  imagePreview:string;
 
   constructor(private route: ActivatedRoute,private managerService : ManagerService) { }
   managerId = localStorage.getItem('user');
@@ -42,6 +42,17 @@ export class EventDetailsComponent implements OnInit {
       });
     });
 
+  }
+
+  onImagePicked(event :Event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.formEdit.patchValue({event_img:file});
+    this.formEdit.get('event_img').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 
   }
   oneEditSubmit() {
