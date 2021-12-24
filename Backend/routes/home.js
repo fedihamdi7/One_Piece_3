@@ -3,5 +3,5 @@ const router = express.Router();
 const homeController = require('../controllers/home');
 
 router.get('/getLatestEvents',homeController.getLatestEvents);
-
+router.get('/getClub',homeController.getClub);
 module.exports = router;

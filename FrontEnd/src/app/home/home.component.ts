@@ -13,18 +13,23 @@ export class HomeComponent implements OnInit {
   public clubs:Club[] = clubsList;
 
   public fetchedEvents ;
+  public fetchedClub;
   constructor(private homeService : HomeService) {
+
   }
 
   ngOnInit(): void {
     this.homeService.getLatestEvents().subscribe(
       (resultat) => {
         this.fetchedEvents = resultat;
-        // console.log(this.fetchedEvents);
-
       }
     );
 
+    this.homeService.getClub().subscribe(
+      (resultatClub) => {
+        this.fetchedClub = resultatClub;
+      }
+    );
   }
 
 }
