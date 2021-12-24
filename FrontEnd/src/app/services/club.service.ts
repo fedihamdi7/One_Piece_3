@@ -10,8 +10,8 @@ export class ClubService {
   API_URL: string = 'http://localhost:3000/api/club';
 
 
-  getOneClub(){
-    return this.http.get<any>(`${this.API_URL}/getOneClub`);
+  getOneClub(id:String){
+    return this.http.get<any>(`${this.API_URL}/getOneClub/`+id);
   }
 
 }
