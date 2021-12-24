@@ -17,6 +17,7 @@ export class EventsComponent implements OnInit , OnDestroy {
 
 
   managerId = localStorage.getItem('user');
+  public showAddEventForm = false;
 
   ngOnInit(): void {
     this.managerService.getEvents(JSON.parse(this.managerId).club_id);
@@ -27,6 +28,12 @@ export class EventsComponent implements OnInit , OnDestroy {
     });
   }
 
+  onClickShowForm(){
+    this.showAddEventForm = true;
+  }
+  onClickCloseForm(){
+    this.showAddEventForm = false;
+  }
 
   ngOnDestroy(): void {
     this.eventSub.unsubscribe();
