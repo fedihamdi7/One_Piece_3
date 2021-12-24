@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user.model';
 import { users } from './users-list';
+import { AdminService } from '../../services/admin.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,12 +9,18 @@ import { users } from './users-list';
 })
 export class UserComponent implements OnInit {
   public username="molka"
+  
   public usersList : User[] = users;
-  constructor() { }
+  public fetchedUser;
+  constructor(private userService : AdminService) { }
 
 
   ngOnInit(): void {
-   
+    this.userService.getUsers().subscribe(
+      (resultatUser) => {
+        this.fetchedUser = resultatUser;
+      }
+    );
   }
 
 }

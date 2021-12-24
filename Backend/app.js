@@ -7,6 +7,11 @@ const app = express();
 const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
 const managerRouter = require('./routes/manager');
+
+const adminRouter = require('./routes/admin');
+
+
+
 const clubRouter = require('./routes/club');
 
 //connecting to database
@@ -28,4 +33,5 @@ app.use('/api/home',homeRouter);
 app.use('/api/manager',managerRouter);
 
 app.use('/api/club',clubRouter);
+app.use('/api/admin',adminRouter);
 module.exports = app;
