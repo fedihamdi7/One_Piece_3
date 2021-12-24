@@ -10,3 +10,14 @@ exports.update = (req, res, next) => {
     club.updateOne({'events.event_id':req.params.id},{'$set':{'events.$':req.body}})
     .then(events => res.json(events));
 }
+
+exports.delete = (req, res, next) => {
+
+        club.updateMany(
+            {},
+            { $pull: { events: { event_id: req.params.id } } }
+        )
+        .then(result => res.json(result));
+
+    
+    };

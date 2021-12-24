@@ -49,4 +49,6 @@ router.post('/:id/events',multer({storage:storage}).single("event_img") ,(req, r
     .then(AddedEvent => res.json(AddedEvent));
 });
 
+router.delete('/:id/events', managerController.delete);
+
 module.exports = router;
