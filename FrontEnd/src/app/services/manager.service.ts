@@ -53,7 +53,7 @@ export class ManagerService {
       eventData.append('event_date',event.event_date);
       eventData.append('event_img',event.event_img);
       eventData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
-     
+
 
       this.http.post(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData)
       .subscribe(res=>{
@@ -63,5 +63,12 @@ export class ManagerService {
         this.eventUpdated.next([...this.Events]);
       });
     }
+
+    // getTeam(id:string){
+    //   this.http.get<any>(`http://localhost:3000/api/manager/${id}/team`).subscribe(res=>{
+    //     this.Team = res[0].teams;
+    //     this.eventUpdated.next([...this.Events]);
+    //   });
+    // }
 
 }

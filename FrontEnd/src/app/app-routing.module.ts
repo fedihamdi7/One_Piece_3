@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'auth',component:AuthComponent},
   {path:'',component:HomeComponent},
   {path:'club',component:ClubComponent},
+  {path:'club/:id',component:ClubComponent},
   {path:'allclubs',component:AllClubsComponent},
   { path: 'dash-respo', loadChildren: () => import('./dash-respo/dash-respo.module').then(m => m.DashRespoModule) ,canActivate:[AuthGuard]},
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
