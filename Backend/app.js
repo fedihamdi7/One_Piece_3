@@ -7,7 +7,10 @@ const app = express();
 const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
 const managerRouter = require('./routes/manager');
+
 const adminRouter = require('./routes/admin');
+
+
 
 const clubRouter = require('./routes/club');
 
