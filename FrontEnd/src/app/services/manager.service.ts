@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Event } from '../dash-respo/events/event.model';
+import { EventType } from '../dash-respo/events/event.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
-  private Events:Event[];
-  private eventUpdated = new Subject<Event[]>();
+  private Events:EventType[];
+  private eventUpdated = new Subject<EventType[]>();
 
   constructor( private http:HttpClient) { }
 
@@ -28,15 +28,19 @@ export class ManagerService {
       return this.eventUpdated.asObservable();
     }
 
-    editEvent(event:Event){
-      console.log(event);
+    editEvent(event:EventType){
+  
+      const eventData = new FormData();
+      eventData.append('event_id',event.event_id);
+      eventData.append('event_name',event.event_name);
+      eventData.append('event_date',event.event_date);
+      eventData.append('event_img',event.event_img);
 
-      const newEvent:Event = {event_id : event.event_id , event_name : event.event_name , event_date : event.event_date , event_img : event.event_img};
-      this.http.put(`http://localhost:3000/api/manager/${event.event_id}/events`,newEvent)
+      this.http.put(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData)
       .subscribe(res=>{
         const updatedEvents = [...this.Events];
         const oldEventIndex = updatedEvents.findIndex(e=>e.event_id === event.event_id);
-        updatedEvents[oldEventIndex] = newEvent;
+        updatedEvents[oldEventIndex] = event;
         this.Events = updatedEvents;
         this.eventUpdated.next([...this.Events]);
 
