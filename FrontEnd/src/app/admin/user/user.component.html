@@ -13,7 +13,7 @@
        
         <tbody>
           
-          <tr *ngFor="let user of usersList">
+          <tr *ngFor="let user of fetchedUser">
             <th scope="row">{{user.name}}</th>
             <td>{{user.email}}</td>
             <td>{{user.type}}</td>

@@ -5,8 +5,8 @@
 <div class="main-container" style="margin-top: -5%;  background-color:rgb(219, 218, 218);" *ngFor="let club of fetchedClub">
     <div class="side-bar" style="height: 500%;">
         <div class="logo-club">
-            <img src="./../../../assets/img/{{club.club_img}}" alt="">
-            <div class="club-name">{{club.name}}</div>
+            <img src="./../../../assets/img/{{club.image}}" alt="">
+            <div class="club-name">{{club.title}}</div>
         </div>
 
         <div class="navigation">
@@ -25,7 +25,7 @@
             
             <h1 class="title">About Us</h1>
             <div class="line-desc"></div>
-            <p>{{club.about}}</p>
+            <p>{{club.description}}</p>
         
             <div class="news">
                 <img src="assets/img/tunivisions_post.jpg" alt="">
@@ -48,7 +48,7 @@
                   <input type="radio" name="slide" id="three">
                   <input type="radio" name="slide" id="four">
                   <input type="radio" name="slide" id="five">
-                  <div class="img img-1" *ngFor="let event of club.events">
+                  <div class="img img-{{i+1}}" *ngFor="let event of club.events;let i=index;">
                   <img src="./../../../assets/img/events/{{event.event_img}}" alt="">
                   </div>
                  
