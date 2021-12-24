@@ -9,7 +9,7 @@
           <div class="content">
               <div class="container">
                   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
-                      <div class="col" *ngFor="let club of AllClubs">
+                      <div class="col" *ngFor="let club of fetchedClubs">
                           <div class="card">
                               <a class="img-card" routerLink="{{club.id}}">
                               <img src="./../../../../assets/img/{{club?.image}}" style="height: 410px;" alt="image"/>
@@ -23,7 +23,7 @@
                                   </p>
                               </div>
                               <div class="card-read-more">
-                                 <a><button type="button" class="btn btn-primary" routerLink="{{club.id}}">More Details</button></a>
+                                 <a><button type="button" class="btn btn-primary" routerLink="club/{{club._id}}">More Details</button></a>
                                  <br> 
                                  <br>
                               </div>
