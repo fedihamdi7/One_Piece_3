@@ -29,7 +29,7 @@ export class ManagerService {
     }
 
     editEvent(event:EventType){
-  
+
       const eventData = new FormData();
       eventData.append('event_id',event.event_id);
       eventData.append('event_name',event.event_name);
@@ -44,6 +44,23 @@ export class ManagerService {
         this.Events = updatedEvents;
         this.eventUpdated.next([...this.Events]);
 
+      });
+    }
+
+    addEvent(event:EventType){
+      const eventData = new FormData();
+      eventData.append('event_name',event.event_name);
+      eventData.append('event_date',event.event_date);
+      eventData.append('event_img',event.event_img);
+      eventData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
+     
+
+      this.http.post(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData)
+      .subscribe(res=>{
+        const updatedEvents = [...this.Events];
+        updatedEvents.push(event);
+        this.Events = updatedEvents;
+        this.eventUpdated.next([...this.Events]);
       });
     }
 

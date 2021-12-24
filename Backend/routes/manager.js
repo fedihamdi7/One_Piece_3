@@ -3,6 +3,8 @@ const router = express.Router();
 const managerController = require('../controllers/manager/events');
 const club = require('../models/Club');
 const multer = require('multer');
+const mongoose = require('mongoose');
+
 
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -31,6 +33,20 @@ router.put('/:id/events',multer({storage:storage}).single("event_img") ,(req, re
     }
     club.updateOne({'events.event_id':req.params.id},{'$set':{'events.$':event}})
     .then(events => res.json(events));
+});
+
+router.post('/:id/events',multer({storage:storage}).single("event_img") ,(req, res, next) => {
+
+
+    const event = {
+        event_id: mongoose.Types.ObjectId().toString(),
+        event_name: req.body.event_name,
+        event_date: req.body.event_date,
+        event_img: req.file.filename,
+    }
+
+    club.updateOne({'_id':req.body.club_id},{'$push':{'events':event}})
+    .then(AddedEvent => res.json(AddedEvent));
 });
 
 module.exports = router;
