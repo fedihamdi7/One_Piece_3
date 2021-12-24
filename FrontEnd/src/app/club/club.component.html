@@ -2,7 +2,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
-<div class="main-container" style="margin-top: -5%;  background-color:rgb(219, 218, 218);" *ngFor="let club of clubsList">
+<div class="main-container" style="margin-top: -5%;  background-color:rgb(219, 218, 218);" *ngFor="let club of fetchedClub">
     <div class="side-bar" style="height: 500%;">
         <div class="logo-club">
             <img src="./../../../assets/img/{{club.club_img}}" alt="">
