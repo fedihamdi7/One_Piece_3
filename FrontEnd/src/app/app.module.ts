@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { AllClubsDetailsComponent } from './all-clubs/all-clubs-details/all-clubs-details.component';
-import { ManagerInterceptor } from './services/manager-interceptor';
+
 
 
 
@@ -37,7 +37,7 @@ import { ManagerInterceptor } from './services/manager-interceptor';
     HttpClientModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ManagerInterceptor, multi: true }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
