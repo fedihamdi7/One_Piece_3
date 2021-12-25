@@ -29,7 +29,6 @@ exports.login = (req, res, next) => {
       email: req.body.email
     })
     .then(user => {
-      console.log(user.type);
       if (!user) {
         return res.status(401).json({
           error: 'User not found !'
