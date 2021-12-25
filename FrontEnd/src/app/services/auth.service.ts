@@ -16,6 +16,7 @@ export class AuthService {
   authToken:any;
   user:any;
   private authStatusListener = new Subject<boolean>();
+  private typeListener = new Subject<string>();
   constructor(private httpClient: HttpClient ,private router:Router,private flashMessagesService : FlashMessagesService) { }
 
   signup(user: User,form:FormGroup) {
@@ -40,6 +41,7 @@ export class AuthService {
         this.storeUserData(res.token,res.user);
         this.router.navigate(['/']);
         this.authStatusListener.next(true);
+        this.typeListener.next(res.user.type);
       }else{
         this.flashMessagesService.show('Something went wrong',{cssClass:'alert-danger'});
       }
@@ -49,6 +51,9 @@ export class AuthService {
       );
   }
 
+  getTypeListener() {
+    return this.typeListener.asObservable();
+  }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
@@ -58,6 +63,7 @@ export class AuthService {
     this.user = null;
     localStorage.clear();
     this.authStatusListener.next(false);
+    this.typeListener.next(null);
     this.router.navigate(['/auth']);
   }
   loadToken(){
