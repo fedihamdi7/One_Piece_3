@@ -4,7 +4,7 @@ const managerController = require('../controllers/manager/events');
 const club = require('../models/Club');
 const multer = require('multer');
 const mongoose = require('mongoose');
-
+const auth = require('../middlewares/auth');
 
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     }
 });
 
-router.get('/:id/events', managerController.get);
+router.get('/:id/events',auth, managerController.get);
 router.put('/:id/events',multer({storage:storage}).single("event_img") ,(req, res, next) => {
 
     const event = {
