@@ -29,6 +29,7 @@ exports.login = (req, res, next) => {
       email: req.body.email
     })
     .then(user => {
+      console.log(user.type);
       if (!user) {
         return res.status(401).json({
           error: 'User not found !'
@@ -43,7 +44,7 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             status:200,
-            user: {userId: user._id, name: user.name, email: user.email, club_id: user.club_id},
+            user: {userId: user._id, name: user.name, email: user.email, club_id: user.club_id,type:user.type},
             token: jwt.sign({
                 userId: user._id
               },
