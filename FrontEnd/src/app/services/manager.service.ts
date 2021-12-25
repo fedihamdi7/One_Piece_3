@@ -10,6 +10,7 @@ import { EventType } from '../dash-respo/events/event.model';
 export class ManagerService {
   private Events:EventType[];
   private eventUpdated = new Subject<EventType[]>();
+  private head = this.getHeaders().headers;
 
   constructor( private http:HttpClient) { }
 
@@ -25,9 +26,8 @@ export class ManagerService {
     }
 
     getEvents(id:string){
-      const head = this.getHeaders().headers;
 
-      this.http.get<any>(`http://localhost:3000/api/manager/${id}/events`,{headers:head}).subscribe(res=>{
+      this.http.get<any>(`http://localhost:3000/api/manager/${id}/events`,{headers:this.head}).subscribe(res=>{
         this.Events = res[0].events;
         this.eventUpdated.next([...this.Events]);
       });
@@ -42,14 +42,13 @@ export class ManagerService {
     }
 
     editEvent(event:EventType){
-      const head = this.getHeaders().headers;
       const eventData = new FormData();
       eventData.append('event_id',event.event_id);
       eventData.append('event_name',event.event_name);
       eventData.append('event_date',event.event_date);
       eventData.append('event_img',event.event_img);
 
-      this.http.put(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData,{headers:head})
+      this.http.put(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData,{headers:this.head})
       .subscribe(res=>{
         const updatedEvents = [...this.Events];
         const oldEventIndex = updatedEvents.findIndex(e=>e.event_id === event.event_id);
@@ -61,7 +60,6 @@ export class ManagerService {
     }
 
     addEvent(event:EventType){
-      const head = this.getHeaders().headers;
       const eventData = new FormData();
       eventData.append('event_name',event.event_name);
       eventData.append('event_date',event.event_date);
@@ -69,7 +67,7 @@ export class ManagerService {
       eventData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
 
 
-      this.http.post(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData,{headers:head})
+      this.http.post(`http://localhost:3000/api/manager/${event.event_id}/events`,eventData,{headers:this.head})
       .subscribe(res=>{
         const updatedEvents = [...this.Events];
         updatedEvents.push(event);
@@ -78,16 +76,10 @@ export class ManagerService {
       });
     }
 
-    // getTeam(id:string){
-    //   this.http.get<any>(`http://localhost:3000/api/manager/${id}/team`).subscribe(res=>{
-    //     this.Team = res[0].teams;
-    //     this.eventUpdated.next([...this.Events]);
-    //   });
-    // }
+
 
     deleteEvent(id:string){
-      const head = this.getHeaders().headers;
-      this.http.delete(`http://localhost:3000/api/manager/${id}/events`,{headers:head})
+      this.http.delete(`http://localhost:3000/api/manager/${id}/events`,{headers:this.head})
       .subscribe(res=>{
         const updatedEvents = this.Events.filter(e=>e.event_id !== id);
         this.Events = updatedEvents;
