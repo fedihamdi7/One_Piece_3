@@ -13,8 +13,21 @@ export class ManagerService {
 
   constructor( private http:HttpClient) { }
 
+    getHeaders(){
+      const token = localStorage.getItem('id_token');
+      const id = JSON.parse(localStorage.getItem('user')).userId;
+      return {
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'userId': id
+        }
+      };
+    }
+
     getEvents(id:string){
-      this.http.get<any>(`http://localhost:3000/api/manager/${id}/events`).subscribe(res=>{
+      const head = this.getHeaders().headers;
+
+      this.http.get<any>(`http://localhost:3000/api/manager/${id}/events`,{headers:head}).subscribe(res=>{
         this.Events = res[0].events;
         this.eventUpdated.next([...this.Events]);
       });
