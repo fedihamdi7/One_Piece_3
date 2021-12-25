@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 });
 
 router.get('/:id/events',auth, managerController.get);
-router.put('/:id/events',multer({storage:storage}).single("event_img") ,(req, res, next) => {
+router.put('/:id/events',auth,multer({storage:storage}).single("event_img") ,(req, res, next) => {
 
     const event = {
         event_id: req.body.event_id,
@@ -35,7 +35,7 @@ router.put('/:id/events',multer({storage:storage}).single("event_img") ,(req, re
     .then(events => res.json(events));
 });
 
-router.post('/:id/events',multer({storage:storage}).single("event_img") ,(req, res, next) => {
+router.post('/:id/events',auth,multer({storage:storage}).single("event_img") ,(req, res, next) => {
 
 
     const event = {
@@ -49,6 +49,6 @@ router.post('/:id/events',multer({storage:storage}).single("event_img") ,(req, r
     .then(AddedEvent => res.json(AddedEvent));
 });
 
-router.delete('/:id/events', managerController.delete);
+router.delete('/:id/events',auth, managerController.delete);
 
 module.exports = router;
