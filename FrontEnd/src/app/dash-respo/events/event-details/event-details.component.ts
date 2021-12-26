@@ -56,8 +56,15 @@ export class EventDetailsComponent implements OnInit {
 
   }
   oneEditSubmit() {
+    if(this.formEdit.value.event_img == null){
+      this.managerService.editEventNoImage(this.formEdit.value);
+      // console.log(this.formEdit.value);
+
+
+    }else{
     this.managerService.editEvent(this.formEdit.value);
-  }
+    }
+}
   showEditForm(){
     this.showEventEditForm = !this.showEventEditForm;
   }
