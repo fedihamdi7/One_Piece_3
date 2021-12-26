@@ -23,8 +23,14 @@ export class NavbarComponent implements OnInit ,OnDestroy {
       if(token){
         this.userIsAuthenticated=true;
       }
+      const type = JSON.parse(localStorage.getItem('user')).type;
+      if(type=="manager"){
+        this.manager=true;
+      }
+      
       this.typeListenerSubs = this.authService.getTypeListener().subscribe(type=>{
         this.userType = type;
+
         if(type=='manager'){
           this.manager = true;
         }
@@ -37,10 +43,11 @@ export class NavbarComponent implements OnInit ,OnDestroy {
       });
 
 
+
     }
     ngOnDestroy(): void {
-      this.typeListenerSubs.unsubscribe();
-      this.authListenerSubs.unsubscribe();
+      // this.typeListenerSubs.unsubscribe();
+      // this.authListenerSubs.unsubscribe();
     }
   onLogoutClick() {
     this.authService.logout();
