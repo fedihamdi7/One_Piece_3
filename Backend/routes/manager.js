@@ -96,3 +96,8 @@ router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(r
     .then(Addedteam => {res.json(Addedteam); console.log(Addedteam);});
 } );
 module.exports = router;
+
+
+
+//////////////////////////////////////// Stats ////////////////////////////////////////
+router.get('/:id/stats',auth, managerController.getStats);
