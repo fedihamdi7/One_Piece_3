@@ -174,4 +174,13 @@ getTeam(){
       this.teamUpdated.next([...this.TeamsList]);
     });
   }
+
+
+
+  //////////////////////////////////////// Stats ////////////////////////////////////////
+
+  getStats(id:string){
+    return this.http.get(`http://localhost:3000/api/manager/${id}/stats`,{headers:this.head});
+
+  }
 }
