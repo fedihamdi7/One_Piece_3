@@ -175,7 +175,38 @@ getTeam(){
     });
   }
 
+  editTeam(team:Team,id:string){
+    const teamData = new FormData();
+    teamData.append('team_name',team.team_name);
+    teamData.append('team_titre',team.team_titre);
+    teamData.append('team_img',team.team_img);
+    teamData.append('team_fb',team.team_fb);
+    teamData.append('team_insta',team.team_insta);
+    teamData.append('team_linkedin',team.team_linkedin);
+    teamData.append('team_twitter',team.team_twitter);
+console.log(team);
+console.log(teamData);
 
+    this.http.put(`http://localhost:3000/api/manager/${id}/team`,teamData,{headers:this.head})
+    .subscribe(res=>{
+      const updatedTeam = [...this.TeamsList];
+      const oldTeamIndex = updatedTeam.findIndex(e=>e.id === team.id);
+      updatedTeam[oldTeamIndex] = team;
+      this.TeamsList = updatedTeam;
+      this.teamUpdated.next([...this.TeamsList]);
+
+    });
+  }
+
+    deleteTeam(id:string){
+      this.http.delete(`http://localhost:3000/api/manager/${id}/team`,{headers:this.head})
+      .subscribe(res=>{
+        const updatedTeam = this.TeamsList.filter(e=>e.id !== id);
+        this.TeamsList = updatedTeam;
+        this.teamUpdated.next([...this.TeamsList]);
+
+      });
+    }
 
   //////////////////////////////////////// Stats ////////////////////////////////////////
 

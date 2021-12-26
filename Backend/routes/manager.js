@@ -97,7 +97,25 @@ router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(r
 } );
 module.exports = router;
 
+router.put('/:id/team',auth,multer({storage:storageEvents}).single("team_img") ,(req, res, next) => {
+console.log(req.body);
+console.log(req.params);
 
+    const team={
+        id:req.params.id,
+        team_name:req.body.team_name,
+        team_titre:req.body.team_titre,
+        team_img:req.file.filename,
+        team_fb:req.body.team_fb,
+        team_insta:req.body.team_insta,
+        team_linkedin:req.body.team_linkedin,
+        team_twitter:req.body.team_twitter,
+    }
+    club.updateOne({'team.id':req.params.id},{'$set':{'team.$':team}})
+    .then(team => res.json(team));
+});
+
+router.delete('/:id/team',auth, teamController.delete);
 
 //////////////////////////////////////// Stats ////////////////////////////////////////
 router.get('/:id/stats',auth, managerController.getStats);

@@ -3,10 +3,11 @@
 
 
   <div class="card card-style" style="width: 18rem;">
-    <img src="./../../../../assets/img/{{team?.team_img}}" class="card-img-top" style="height: 350px;" alt="image">
+    <img src="./../../../../assets/img/events/{{team?.team_img}}" class="card-img-top" style="height: 350px;" alt="image">
     <div class="card-body">
       <h5 class="card-title"> Name : {{team?.team_name}} </h5>
       <p class="card-text">  Titre : {{team?.team_titre}} </p>
+
       <div class="socialMedia">
       <a href="{{team?.team_fb}}"><img src="./../../../../assets/img/facebook.png" alt="" class="image"></a>
       <a href="{{team?.team_insta}}"><img src="./../../../../assets/img/insta.jpg" alt="" class="image"></a>
@@ -14,9 +15,56 @@
       <a href="{{team?.team_linkedin}}"><img src="./../../../../assets/img/linkedin.png" alt="" class="image"></a>
       </div>
       <div style="display: flex;gap: 15px;">
-      <a href="#" class="btn btn-primary">Edit</a>
-      <a href="#" class="btn btn-danger">Delete</a>
-    </div>
+        <a  class="btn btn-primary" (click)="showEditForm()">Edit</a>
+        <a  class="btn btn-danger" (click)="onDeleteTeam()" >Delete</a>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+<div class="edit" *ngIf="showEventEditForm">
+  <!-- create form -->
+  <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
+    <div class="form-group">
+      <label for="team_name">Team Name</label>
+      <input type="text" class="form-control" id="team_name" formControlName="team_name" placeholder="Enter Team name">
+    </div>
+    <div class="form-group">
+      <label for="team_titre">Team title</label>
+      <input type="text" class="form-control" id="team_titre" formControlName="team_titre" placeholder="Enter Team title">
+    </div>
+   <div class="row">
+    <div class="form-group col">
+      <label for="team_fb">Team facebook</label>
+      <input type="text" class="form-control" id="team_fb" formControlName="team_fb" placeholder="Enter Team facebook">
+    </div>
+    <div class="form-group col">
+      <label for="team_insta">Team instagram</label>
+      <input type="text" class="form-control" id="team_insta" formControlName="team_insta" placeholder="Enter Team instagram">
+    </div>
+   </div>
+   <div class="row">
+    <div class="form-group col">
+      <label for="team_linkedin">Team LinkedIn</label>
+      <input type="text" class="form-control" id="team_linkedin" formControlName="team_linkedin" placeholder="Enter Team LinkedIn">
+    </div>
+    <div class="form-group col">
+      <label for="team_twitter">Team Twitter</label>
+      <input type="text" class="form-control" id="team_twitter" formControlName="team_twitter" placeholder="Enter Team Twitter">
+    </div>
+   </div>
+
+    <div class="form-group">
+          <label for="team_img">Team Image</label>
+          <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="team_img" placeholder="Enter team image">
+      <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+        <img [src]="imagePreview" alt="">
+      </div>
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
