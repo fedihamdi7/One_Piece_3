@@ -3,3 +3,34 @@
     left: 60vh;
     margin-top: 6%;
   }
+ 
+
+.edit{
+  width: 400px;
+  position: absolute;
+  right: 12%;
+  top: 16%;
+  padding: 15px;
+  background-color: rgba(190, 190, 190, 0.37);
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+.edit label{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.edit button{
+  margin-top: 10px;
+
+}
+
+.image-preview{
+  height: 135px;
+    width: 209px;
+    margin-top: 10px;
+}
+.image-preview img{
+  height: 100%;
+  width: 100%;
+}
