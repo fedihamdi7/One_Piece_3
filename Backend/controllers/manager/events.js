@@ -28,3 +28,9 @@ exports.delete = (req, res, next) => {
 
     
     };
+
+
+exports.getLogo = (req, res, next) => {
+    club.find({'_id':req.params.id},{'image':1,'_id':0})
+    .then(image => res.json(image));
+}
