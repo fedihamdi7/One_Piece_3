@@ -1,5 +1,5 @@
 <app-admin></app-admin>
-<div style="margin-left: 20%;margin-top: 3%;">
+<!-- <div style="margin-left: 20%;margin-top: 3%;">
     <div class="container d-flex justify-content-center">
         <div class="card p-3 py-4">
             <div class="text-center"> <img src="./../../../../assets/img/{{ user?.user_img }}" width="100" class="rounded-circle">
@@ -18,5 +18,54 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<div class="contenu">
+    <div class="card card-style" style="width: 18rem;">
+      <img src="./../../../../assets/img/{{user?.user_img}}" class="card-img-top" style="height: 350px;" alt="image">
+      <div class="card-body">
+        <h5 class="card-title">User {{ user?.name }} </h5>
+        <p class="card-text">Email :{{ user?.email }} </p>
+        <p class="card-text">Type :{{ user?.type }} </p>
+        <div style="display: flex;gap: 15px;">
+        <a  class="btn btn-primary" (click)="showEditForm()">Edit</a>
+        <a  class="btn btn-danger" (click)="onDeleteUser()" >Delete</a>
+      </div>
+      </div>
+    </div>
+  
+  
+  <div class="edit" *ngIf="showEventEditForm">
+    <!-- create form -->
+    <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
+        <div class="form-group">
+            <label for="name">User Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter user name">
+          </div>
+          <div class="form-group">
+            <label for="email">User Email : </label>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Enter user email">
+          </div>
+          
+          <div class="form-group">
+            <label for="radio">User type : </label>
+            <!-- <input type="text" class="form-control" id="type" formControlName="type" placeholder="Enter user type"> -->
+            <select class="form-control" id="type" formControlName="type" name="type">
+            <option value="admin">admin</option>
+            <option value="manager">manager</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="event_img">User Image</label>
+            <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="userimage" placeholder="Enter user image">
+        <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+          <img [src]="imagePreview" alt="">
+        </div>
+          </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
+  </div>
+  
+  
 

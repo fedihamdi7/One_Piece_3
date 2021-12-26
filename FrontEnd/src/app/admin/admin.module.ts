@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { UserdetailComponent } from './user/userdetail/userdetail.component';
 import { ClubComponent } from './club/club.component';
 import { ClubDetailsComponent } from './club/club-details/club-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ClubDetailsComponent } from './club/club-details/club-details.component
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
