@@ -11,7 +11,7 @@ export class ManagerService {
   private Events:EventType[];
   private eventUpdated = new Subject<EventType[]>();
   private head = this.getHeaders().headers;
-
+  public logo = new Subject<string>();
   constructor( private http:HttpClient) { }
 
     getHeaders(){
@@ -24,6 +24,7 @@ export class ManagerService {
         }
       };
     }
+//////////////////////////////////////// Events ////////////////////////////////////////
 
     getEvents(id:string){
 
@@ -89,8 +90,6 @@ export class ManagerService {
       });
     }
 
-
-
     deleteEvent(id:string){
       this.http.delete(`http://localhost:3000/api/manager/${id}/events`,{headers:this.head})
       .subscribe(res=>{
@@ -99,6 +98,32 @@ export class ManagerService {
         this.eventUpdated.next([...this.Events]);
 
       });
+    }
+
+//////////////////////////////////////// Logo ////////////////////////////////////////
+
+    getLogo(){
+      const club_id = JSON.parse(localStorage.getItem('user')).club_id;
+
+      this.http.get<any>(`http://localhost:3000/api/manager/${club_id}/logo`,{headers:this.head}).subscribe(res=>{
+        this.logo.next(res[0].image);
+        // console.log(res[0].image);
+
+      });
+    }
+    getLogoUpdateListener(){
+      return this.logo.asObservable();
+    }
+
+    ChangeLogo(logo:string){
+      const eventData = new FormData();
+      eventData.append('logo',logo);
+      const id = JSON.parse(localStorage.getItem('user')).club_id;
+      this.http.put(`http://localhost:3000/api/manager/${id}/logo`,eventData,{headers:this.head})
+      .subscribe(res=>{
+        console.log(res);
+      });
+
     }
 
 
