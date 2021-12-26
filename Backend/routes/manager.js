@@ -11,7 +11,7 @@ const MIME_TYPE_MAP = {
     'image/jpeg': 'jpg',
     'image/jpg': 'jpg'
 };
-const storage = multer.diskStorage({
+const storageEvents = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './../FrontEnd/src/assets/img/events');
     },
@@ -21,12 +21,24 @@ const storage = multer.diskStorage({
         cb(null, name + '-' + Date.now() + '.' + ext);
     }
 });
+const storageLogo = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './../FrontEnd/src/assets/img');
+    },
+    filename: function (req, file, cb) {
+        const name = file.originalname.toLowerCase().split(' ').join('-');
+        const ext= MIME_TYPE_MAP[file.mimetype];
+        cb(null, name + '-' + Date.now() + '.' + ext);
+    }
+});
 
+
+//////////////////////////////////////// Events ////////////////////////////////////////
 router.get('/:id/events',auth, managerController.get);
 
 router.put('/:id/eventsNoImage',auth, managerController.update);
 
-router.put('/:id/events',auth,multer({storage:storage}).single("event_img") ,(req, res, next) => {
+router.put('/:id/events',auth,multer({storage:storageEvents}).single("event_img") ,(req, res, next) => {
 
     const event = {
         event_id: req.body.event_id,
@@ -38,7 +50,7 @@ router.put('/:id/events',auth,multer({storage:storage}).single("event_img") ,(re
     .then(events => res.json(events));
 });
 
-router.post('/:id/events',auth,multer({storage:storage}).single("event_img") ,(req, res, next) => {
+router.post('/:id/events',auth,multer({storage:storageEvents}).single("event_img") ,(req, res, next) => {
 
 
     const event = {
@@ -53,5 +65,15 @@ router.post('/:id/events',auth,multer({storage:storage}).single("event_img") ,(r
 });
 
 router.delete('/:id/events',auth, managerController.delete);
+
+
+//////////////////////////////////////// Logo ////////////////////////////////////////
+
+router.put('/:id/logo',auth,multer({storage:storageLogo}).single("logo") ,(req, res, next) => {
+      club.updateOne({'_id':req.params.id},{'$set':{'image':req.file.filename}})
+      .then(logo => res.json({"logo":req.file.filename}));
+});
+
+router.get('/:id/logo',auth, managerController.getLogo);
 
 module.exports = router;
