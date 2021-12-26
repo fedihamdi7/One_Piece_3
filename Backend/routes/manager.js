@@ -23,6 +23,9 @@ const storage = multer.diskStorage({
 });
 
 router.get('/:id/events',auth, managerController.get);
+
+router.put('/:id/eventsNoImage',auth, managerController.update);
+
 router.put('/:id/events',auth,multer({storage:storage}).single("event_img") ,(req, res, next) => {
 
     const event = {

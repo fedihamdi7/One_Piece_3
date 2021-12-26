@@ -7,9 +7,16 @@ exports.get = (req, res, next) => {
 }
 
 exports.update = (req, res, next) => {
-    club.updateOne({'events.event_id':req.params.id},{'$set':{'events.$':req.body}})
+    console.log(req.body);
+    club.updateOne({'events.event_id':req.params.id},
+    {'$set':{
+        'events.$.event_date':req.body.event_date,
+        'events.$.event_name':req.body.event_name,
+    }})
     .then(events => res.json(events));
 }
+
+
 
 exports.delete = (req, res, next) => {
 

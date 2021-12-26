@@ -41,6 +41,19 @@ export class ManagerService {
       return this.eventUpdated.asObservable();
     }
 
+    editEventNoImage(event:EventType){
+
+      this.http.put<any>(`http://localhost:3000/api/manager/${event.event_id}/eventsNoImage`,event,{headers:this.head})
+      .subscribe(res=>{
+          const updatedEvents = [...this.Events];
+        const oldEventIndex = updatedEvents.findIndex(e=>e.event_id === event.event_id);
+        updatedEvents[oldEventIndex].event_name = event.event_name;
+        updatedEvents[oldEventIndex].event_date = event.event_date;
+        this.Events = updatedEvents;
+        this.eventUpdated.next([...this.Events]);
+
+      });
+    }
     editEvent(event:EventType){
       const eventData = new FormData();
       eventData.append('event_id',event.event_id);
