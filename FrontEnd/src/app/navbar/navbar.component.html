@@ -10,7 +10,7 @@
           <a class="nav-link"  aria-current="page" routerLink="/" routerLinkActive="ActiveLink" [routerLinkActiveOptions]="{exact:true}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="ActiveLink" routerLink="/dash-respo" *ngIf="manager">Dashboard responsable</a>
+          <a class="nav-link" routerLinkActive="ActiveLink" routerLink="/dash-respo" *ngIf="userIsAuthenticated && manager">Dashboard responsable</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  routerLinkActive="ActiveLink"  routerLink="/club" >Club</a>

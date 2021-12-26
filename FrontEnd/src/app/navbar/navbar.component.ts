@@ -19,6 +19,9 @@ export class NavbarComponent implements OnInit ,OnDestroy {
     ) { }
 
     ngOnInit(): void {
+      this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
+        this.userIsAuthenticated= isAuthenticated;
+      });
       const token = localStorage.getItem('id_token');
       if(token){
         this.userIsAuthenticated=true;
@@ -27,7 +30,7 @@ export class NavbarComponent implements OnInit ,OnDestroy {
       if(type=="manager"){
         this.manager=true;
       }
-      
+
       this.typeListenerSubs = this.authService.getTypeListener().subscribe(type=>{
         this.userType = type;
 
@@ -38,9 +41,7 @@ export class NavbarComponent implements OnInit ,OnDestroy {
           this.manager = false;
         }
       });
-      this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
-        this.userIsAuthenticated= isAuthenticated;
-      });
+
 
 
 
