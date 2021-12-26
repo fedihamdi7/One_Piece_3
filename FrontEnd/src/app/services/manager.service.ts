@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { EventType } from '../dash-respo/events/event.model';
+import { Team } from '../dash-respo/team/team.model';
 
 
 @Injectable({
@@ -9,7 +10,9 @@ import { EventType } from '../dash-respo/events/event.model';
 })
 export class ManagerService {
   private Events:EventType[];
+  private TeamsList:Team[];
   private eventUpdated = new Subject<EventType[]>();
+  private teamUpdated = new Subject<Team[]>();
   private head = this.getHeaders().headers;
   public logo = new Subject<string>();
   constructor( private http:HttpClient) { }
@@ -126,5 +129,49 @@ export class ManagerService {
 
     }
 
+//////////////////////////////////////// team ////////////////////////////////////////
 
+getTeamList(){
+  this.getTeam();
+  return this.TeamsList;
+}
+
+getTeam(){
+  const club_id=JSON.parse(localStorage.getItem('user')).club_id;
+  const user_id=JSON.parse(localStorage.getItem('user')).userId;
+  const token='Bearer '+localStorage.getItem('id_token');
+  const header={
+    'Authorization': token,
+    'userId':user_id
+  };
+   this.http.get(`http://localhost:3000/api/manager/${club_id}/team`,{headers:header})
+   .subscribe(
+    (resultat:any) => {
+      this.TeamsList = resultat.team;
+      this.teamUpdated.next([...this.TeamsList]);
+    }
+  );
+  }
+  getupdatedTeamListener(){
+    return this.teamUpdated.asObservable();
+  }
+  addTeam(team:Team){
+    const teamData = new FormData();
+    teamData.append('team_name',team.team_name);
+    teamData.append('team_titre',team.team_titre);
+    teamData.append('team_img',team.team_img);
+    teamData.append('team_fb',team.team_fb);
+    teamData.append('team_insta',team.team_insta);
+    teamData.append('team_linkedin',team.team_linkedin);
+    teamData.append('team_twitter',team.team_twitter);
+    const club_id=JSON.parse(localStorage.getItem('user')).club_id;
+
+    this.http.post(`http://localhost:3000/api/manager/${club_id}/team`,teamData,{headers:this.head})
+    .subscribe(res=>{
+      const updatedTeam = [...this.TeamsList];
+      updatedTeam.push(team);
+      this.TeamsList = updatedTeam;
+      this.teamUpdated.next([...this.TeamsList]);
+    });
+  }
 }
