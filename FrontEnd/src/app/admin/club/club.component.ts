@@ -36,17 +36,17 @@ export class ClubComponent implements OnInit, OnDestroy {
     });
   }
 
-  onImagePicked(club :Club){
-    const file = (club.target as HTMLInputElement).files[0];
-    this.formAdd.patchValue({club_img:file});
-    this.formAdd.get('club_img').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+  // onImagePicked(club :Club){
+  //   const file = (club.target as HTMLInputElement).files[0];
+  //   this.formAdd.patchValue({club_img:file});
+  //   this.formAdd.get('club_img').updateValueAndValidity();
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.imagePreview = reader.result as string;
+  //   };
+  //   reader.readAsDataURL(file);
 
-  }
+  // }
   async onAddSubmit(){
     await this.adminService.addClub(this.formAdd.value);
     this.showAddClubForm = false;

@@ -1,5 +1,5 @@
 export interface Club {
-    target: HTMLInputElement;
+  //  target: HTMLInputElement;
     id?: string;
     name?:string;
     club_img?:string;

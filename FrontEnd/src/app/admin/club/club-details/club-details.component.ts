@@ -43,17 +43,17 @@ export class ClubDetailsComponent implements OnInit {
       });
     });
   }
-  onImagePicked(club :Club){
-    const file = (club.target as HTMLInputElement).files[0];
-    this.formEdit.patchValue({club_img:file});
-    this.formEdit.get('club_img').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+  // onImagePicked(club :Club){
+  //   const file = (club.target as HTMLInputElement).files[0];
+  //   this.formEdit.patchValue({club_img:file});
+  //   this.formEdit.get('club_img').updateValueAndValidity();
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.imagePreview = reader.result as string;
+  //   };
+  //   reader.readAsDataURL(file);
 
-  }
+  // }
   oneEditSubmit() {
     this.adminService.editClub(this.formEdit.value);
   }
