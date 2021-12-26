@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const managerController = require('../controllers/manager/events');
+const teamController = require('../controllers/manager/team');
 const club = require('../models/Club');
 const multer = require('multer');
 const mongoose = require('mongoose');
@@ -76,4 +77,24 @@ router.put('/:id/logo',auth,multer({storage:storageLogo}).single("logo") ,(req, 
 
 router.get('/:id/logo',auth, managerController.getLogo);
 
+
+//////////////////////////////////////// Team ////////////////////////////////////////
+router.get('/:id/team',auth, teamController.get);
+router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(req, res, next) =>{
+    const team={
+        id:mongoose.Types.ObjectId().toString(),
+        team_name:req.body.team_name,
+        team_titre:req.body.team_titre,
+        team_img:req.file.filename,
+        team_fb:req.body.team_fb,
+        team_insta:req.body.team_insta,
+        team_linkedin:req.body.team_linkedin,
+        team_twitter:req.body.team_twitter,
+    }
+    console.log(team);
+    console.log(req.params.id);
+    console.log(req.params.id);
+    club.updateOne({'_id':req.params.team_id},{'$push':{'team':team}})
+    .then(Addedteam => {res.json(Addedteam); console.log(Addedteam);});
+} );
 module.exports = router;

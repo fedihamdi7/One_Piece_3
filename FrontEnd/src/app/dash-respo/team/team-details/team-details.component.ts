@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { teams } from '../team-list';
+import { ManagerService } from 'src/app/services/manager.service';
 import { Team } from '../team.model';
 
 @Component({
@@ -10,12 +10,19 @@ import { Team } from '../team.model';
 })
 export class TeamDetailsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,private managerService:ManagerService) { }
 public team?:Team;
   ngOnInit(): void {
+    this.managerService.getTeamList();
     this.route.paramMap.subscribe(params=>{
       const teamId=params.get("id");
-      this.team=teams.find(t=>t.id==teamId);
+      this.managerService.getupdatedTeamListener()
+      .subscribe(res => {
+
+        const teamList = res;
+        this.team = teamList.find(t=>t.id==teamId);
+        console.log(res);
+      })
     })
   }
 
