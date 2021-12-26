@@ -91,10 +91,8 @@ router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(r
         team_linkedin:req.body.team_linkedin,
         team_twitter:req.body.team_twitter,
     }
-    console.log(team);
-    console.log(req.params.id);
-    console.log(req.params.id);
-    club.updateOne({'_id':req.params.team_id},{'$push':{'team':team}})
+ 
+    club.updateOne({'_id':req.params.id},{'$push':{'team':team}})
     .then(Addedteam => {res.json(Addedteam); console.log(Addedteam);});
 } );
 module.exports = router;
