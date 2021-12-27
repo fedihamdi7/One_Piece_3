@@ -239,10 +239,10 @@ ChangeAbout(description:string){
   // const aboutData = new FormData();
   // aboutData.append('about',about);
   const id = JSON.parse(localStorage.getItem('user')).club_id;
-  console.log(this.head);
+
   this.http.put(`http://localhost:3000/api/manager/${id}/about`,data,{headers:this.head})
   .subscribe(res=>{
-    console.log(res);
+ 
   });
 }
 
@@ -280,16 +280,16 @@ getPost(){
     postData.append('post_title',post.post_title);
     postData.append('post_img',post.post_img);
 
-console.log(post);
-console.log(postData);
 
     this.http.put(`http://localhost:3000/api/manager/${id}/post`,postData,{headers:this.head})
     .subscribe(res=>{
-      const updatedPost = [...this.PostList];
-      const oldPostIndex = updatedPost.findIndex(e=>e.id === post.id);
-      updatedPost[oldPostIndex] = post;
-      this.PostList = updatedPost;
-      this.postUpdated.next([...this.PostList]);
+      console.log(res);
+
+      // const updatedPost = [...this.PostList];
+      // const oldPostIndex = updatedPost.findIndex(e=>e.id === post.id);
+      // updatedPost[oldPostIndex] = post;
+      // this.PostList = updatedPost;
+      // this.postUpdated.next([...this.PostList]);
 
     });
   }

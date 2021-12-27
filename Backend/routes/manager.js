@@ -22,6 +22,16 @@ const storageEvents = multer.diskStorage({
         cb(null, name + '-' + Date.now() + '.' + ext);
     }
 });
+const storagePosts = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './../FrontEnd/src/assets/img/posts');
+    },
+    filename: function (req, file, cb) {
+        const name = file.originalname.toLowerCase().split(' ').join('-');
+        const ext= MIME_TYPE_MAP[file.mimetype];
+        cb(null, name + '-' + Date.now() + '.' + ext);
+    }
+});
 const storageLogo = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './../FrontEnd/src/assets/img');
@@ -132,17 +142,18 @@ router.get('/:id/about',auth, managerController.getAbout);
 
 //////////////////////////////////////// post ////////////////////////////////////////
 
-router.put('/:id/post',auth,multer({storage:storageEvents}).single("post_img") ,(req, res, next) => {
-    console.log(req.body);
-    console.log(req.params);
+router.put('/:id/post',auth,multer({storage:storagePosts}).single("post_img") ,(req, res, next) => {
     
         const post={
-            id:req.params.id,
             post_title:req.body.post_title,
             post_description:req.body.post_description,
             post_img:req.file.filename,
         }
-        club.updateOne({'post.id':req.params.id},{'$set':{'post.$':post}})
-        .then(post => res.json(post));
+        club.updateOne({'_id':req.params.id},{'$set':{'post':post}})
+        .then(post => {res.json(post); console.log(post);});
     });
     
+router.get('/:id/post',auth,(req, res, next) => {
+    club.findOne({'_id':req.params.id})
+    .then(post => res.json(post));
+} );

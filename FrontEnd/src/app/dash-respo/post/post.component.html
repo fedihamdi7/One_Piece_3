@@ -3,13 +3,13 @@
 
 
 
-  <div class="row">
+  <div class="row" style="">
     <div class="col form">
       <form [formGroup]="formPost" (submit)="onPostSubmit()">
 
         <div class="form-group" style="width: 100%;">
           <label for="post_title">Post title</label>
-          <input type="text"  class="form-control" formControlName="post_title" id="post_title" placeholder="Enter your post title">
+          <input type="text"  class="form-control" formControlName="post_title" id="post_title" placeholder="Enter your post title" >
           <label for="post_description">Post description</label>
           <input type="text"  class="form-control" formControlName="post_description" id="post_description" placeholder="Enter your post description">
           <label for="post_img">Post image</label>
@@ -30,7 +30,7 @@
         <p>{{ post?.post_description }}</p>
       </div>
       <div class="currentImage">
-        <img src="./../../../../assets/img/{{ post?.post_img }}" alt="">
+        <img style="width: 100%;" src="./../../../../assets/img/{{ post?.post_img }}" alt="">
       </div>
     </div>
   </div>
