@@ -8,7 +8,7 @@ const authRouter = require('./routes/auth');
 const homeRouter = require('./routes/home');
 const managerRouter = require('./routes/manager');
 
-const adminRouter = require('./routes/admin');
+const adminRouter = require('./routes/admin_user');
 
 
 
@@ -33,5 +33,5 @@ app.use('/api/home',homeRouter);
 app.use('/api/manager',managerRouter);
 
 app.use('/api/club',clubRouter);
-app.use('/api/admin',adminRouter);
+app.use('/api/admin_user',adminRouter);
 module.exports = app;

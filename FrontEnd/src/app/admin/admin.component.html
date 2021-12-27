@@ -1,4 +1,4 @@
-<div class="main-container" style="margin-top: -5%;">
+<div class="main-container" >
     <div class="side-bar">
       <div class="logo-club">
           <img src="../../assets/img/dashboardadmin.png" width="10px" alt="">
@@ -7,7 +7,7 @@
     
       <div class="navigation">
           <ul>
-              <li> <a routerLink="/admin/user"> Users </a> </li>
+            <li [routerLinkActive]="'activerouteLi'"> <a [routerLinkActive]="'activerouteA'"routerLink="/admin/user"> Users </a> </li>
              
               <li> <a routerLink="/admin/club"> Clubs </a> </li>
           </ul>
