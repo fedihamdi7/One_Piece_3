@@ -3,25 +3,39 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from '../admin/user/user.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminUserService {
   private UsersList:User[];
   private userUpdated = new Subject<User[]>();
+  private head = this.getHeaders().headers;
 
   constructor(private http:HttpClient) { }
 
   API_URL: string = 'http://localhost:3000/api/admin_user';
  
+  getHeaders(){
+    const token = localStorage.getItem('id_token');
+    const id = JSON.parse(localStorage.getItem('user')).userId;
+    return {
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'userId': id
+      }
+    };
+  }
+
 
   getUsers(){
-    return this.http.get<any>(`${this.API_URL}/getUsers`);
+    
+    return this.http.get<any>(`${this.API_URL}/getUsers`,{headers:this.head});
   }
 
 
   getUser(id:String){
-    return this.http.get(`http://localhost:3000/api/admin_user/getOneUser/`+id);
+    return this.http.get(`http://localhost:3000/api/admin_user/getOneUser/`+id,{headers:this.head});
     
     }
      getupdatedUserListener(){
@@ -40,7 +54,7 @@ export class AdminUserService {
     //  userData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
 
       //console.log(userData);
-       this.http.post(`http://localhost:3000/api/admin_user/addUser`,userData)
+       this.http.post(`http://localhost:3000/api/admin_user/addUser`,userData,{headers:this.head})
        .subscribe(res=>{
          console.log(res);
 
@@ -59,7 +73,7 @@ export class AdminUserService {
     //  userData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
 
       //console.log(userData);
-       this.http.put(`http://localhost:3000/api/admin_user/editUser/`+id,userData)
+       this.http.put(`http://localhost:3000/api/admin_user/editUser/`+id,userData,{headers:this.head})
        .subscribe(res=>{
          console.log(res);
 
@@ -67,7 +81,7 @@ export class AdminUserService {
       }); 
     }
 DeleteUser(id:string){
-  this.http.delete(`http://localhost:3000/api/admin_user/${id}/deleteuser`)
+  this.http.delete(`http://localhost:3000/api/admin_user/${id}/deleteuser`,{headers:this.head})
   .subscribe(res=>{
     console.log(res);
 

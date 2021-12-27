@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/admin/users');
 const bcrypt = require('bcrypt');
 const User=require('../models/User');
+const auth=require('../middlewares/auth');
 const mongoose=require('mongoose');
 const multer = require('multer');
 const MIME_TYPE_MAP = {
@@ -25,9 +26,9 @@ const storageEvents = multer.diskStorage({
 
 
 
-router.get('/getUsers',userController.getUsers);
-router.get('/getOneUser/:id',userController.getOneUser);
-router.post('/addUser',multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
+router.get('/getUsers',auth,userController.getUsers);
+router.get('/getOneUser/:id',auth,userController.getOneUser);
+router.post('/addUser',auth,multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
     console.log(req.file);
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -54,7 +55,7 @@ router.post('/addUser',multer({storage:storageEvents}).single("user_img") ,(req,
 
 
 });
-router.put('/editUser/:id',multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
+router.put('/editUser/:id',auth,multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
     
    
  const id=req.params.id;
@@ -79,6 +80,6 @@ router.put('/editUser/:id',multer({storage:storageEvents}).single("user_img") ,(
 
 
 });
-router.delete('/:id/deleteuser',userController.delete)
+router.delete('/:id/deleteuser',auth,userController.delete)
 
 module.exports = router;
