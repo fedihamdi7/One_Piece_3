@@ -280,9 +280,6 @@ getPost(){
     postData.append('post_title',post.post_title);
     postData.append('post_img',post.post_img);
 
-console.log(post);
-console.log(postData);
-
     this.http.put(`http://localhost:3000/api/manager/${id}/post`,postData,{headers:this.head})
     .subscribe(res=>{
       const updatedPost = [...this.PostList];

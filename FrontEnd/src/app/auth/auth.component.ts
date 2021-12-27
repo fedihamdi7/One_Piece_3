@@ -44,10 +44,12 @@ export class AuthComponent implements OnInit {
   }
 
   onSignUpSubmit(){
-    console.log(this.formSignUp.value.type);
     if ( this.formSignUp.value.type == "user"){
     this.authService.signup(this.formSignUp.value,this.formSignUp);
-  }
+  }else if ( this.formSignUp.value.type == "manager"){
+    this.authService.signup(this.formSignUp.value,this.formSignUp);
+    this.router.navigate(['/auth-manager']);
+    }
   }
 
   onImagePicked(event :Event){
