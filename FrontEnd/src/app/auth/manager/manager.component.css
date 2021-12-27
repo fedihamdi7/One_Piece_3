@@ -1,0 +1,44 @@
+.image-preview{
+  height: 213px;
+    width: 209px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.image-preview img{
+  height: 100%;
+  width: 100%;
+}
+.container{
+  margin-top: 10%;
+  margin-left: 12%;
+}
+h3{
+  padding: 20px;
+  font-weight: bold;
+}
+.currentLogo img{
+  height: 135px;
+  width: 209px;
+  margin: 20px;
+}
+
+.form{
+  padding: 50px;
+}
+.row{
+  padding: 20px;
+  background-color: rgba(14, 23, 61, 0.062);
+  width: 60vw;
+  height: 55vh;
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+label{
+  margin-bottom: 9px;
+}
+input{
+  margin-bottom: 10px;
+}

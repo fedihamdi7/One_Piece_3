@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Observable, Subject, throwError } from 'rxjs';
+import { Club } from '../admin/club/club.model';
 
 import { User } from '../admin/user/user.model';
 @Injectable({
@@ -20,9 +21,17 @@ export class AuthService {
   constructor(private httpClient: HttpClient ,private router:Router,private flashMessagesService : FlashMessagesService) { }
 
   signup(user: User,form:FormGroup) {
+    const userData = new FormData();
+    userData.append('name',user.name);
+    userData.append('email',user.email);
+    userData.append('password',user.password);
+    userData.append('type',user.type);
+    userData.append('user_img',user.user_img);
 
-    this.httpClient.post<any>(`${this.API_URL}/auth/signup`, user).subscribe( (res):any =>{
+    this.httpClient.post<any>(`${this.API_URL}/auth/signup`, userData).subscribe( (res):any =>{
       if(res.status == 201) {
+        localStorage.setItem('user_id',JSON.stringify(res.userId));
+
         form.reset();
         let element: HTMLElement = document.getElementById('signIn') as HTMLElement;
         element.click();
@@ -50,6 +59,25 @@ export class AuthService {
     }
       );
   }
+
+  async clubManager(club:Club){
+    const user_id = JSON.parse(localStorage.getItem('user_id'));
+    const header={
+      'user_id':user_id
+    };
+    const clubData = new FormData();
+      clubData.append('title',club.title);
+      clubData.append('description',club.description);
+      clubData.append('image',club.image);
+    await this.httpClient.post('http://localhost:3000/api/auth/clubManager',clubData,{headers:header}).subscribe(res => {
+
+        this.flashMessagesService.show('Club Created Successfully', { cssClass: 'alert-success'});
+        this.router.navigate(['/auth']);
+        localStorage.clear();
+
+
+  }
+  );}
 
   getTypeListener() {
     return this.typeListener.asObservable();

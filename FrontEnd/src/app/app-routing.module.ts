@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllClubsComponent } from './all-clubs/all-clubs.component';
 import { AuthComponent } from './auth/auth.component';
+import { ManagerComponent } from './auth/manager/manager.component';
 import { ClubComponent } from './club/club.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IsAdminGuard } from './guards/is-admin.guard';
@@ -11,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path:'auth',component:AuthComponent},
+  {path:'auth-manager',component:ManagerComponent},
   {path:'',component:HomeComponent},
   {path:'club',component:ClubComponent},
   {path:'club/:id',component:ClubComponent},
