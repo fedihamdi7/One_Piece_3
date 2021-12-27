@@ -12,14 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="ActiveLink" routerLink="/dash-respo/main-dash" *ngIf="userIsAuthenticated && manager">Dashboard responsable</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"  routerLinkActive="ActiveLink"  routerLink="/club" >Club</a>
-        </li>
+  
         <li class="nav-item">
           <a class="nav-link"  routerLinkActive="ActiveLink" routerLink="/allclubs" >Clubs List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  routerLinkActive="ActiveLink" routerLink="/admin" >Dashboard admin</a>
+          <a class="nav-link"  routerLinkActive="ActiveLink" routerLink="/admin" *ngIf="userIsAuthenticated && admin">Dashboard admin</a>
         </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

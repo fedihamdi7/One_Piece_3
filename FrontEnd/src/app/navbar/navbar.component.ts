@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit ,OnDestroy {
   userIsAuthenticated = false;
   userType:string;
   manager : boolean;
+  admin:boolean=false;
+
   constructor(
     public authService : AuthService,
     ) { }
@@ -30,7 +32,10 @@ export class NavbarComponent implements OnInit ,OnDestroy {
       if(type=="manager"){
         this.manager=true;
       }
-
+      if(type=="admin"){
+        this.admin=true;
+      }
+      else{this.admin=false;}
       this.typeListenerSubs = this.authService.getTypeListener().subscribe(type=>{
         this.userType = type;
 
