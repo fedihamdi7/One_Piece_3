@@ -119,3 +119,13 @@ router.delete('/:id/team',auth, teamController.delete);
 
 //////////////////////////////////////// Stats ////////////////////////////////////////
 router.get('/:id/stats',auth, managerController.getStats);
+
+
+//////////////////////////////////////// about ////////////////////////////////////////
+
+router.put('/:id/about',auth,(req, res, next) => { 
+    club.updateOne({'_id':req.params.id},{'$set':{'description':req.body.description}})
+    .then(about => res.json({"about":req.body.description}));
+});
+
+router.get('/:id/about',auth, managerController.getAbout);

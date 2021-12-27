@@ -10,6 +10,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { TeamDetailsComponent } from './team/team-details/team-details.component';
 import { LogoComponent } from './logo/logo.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MainDashComponent } from './main-dash/main-dash.component';
     TeamDetailsComponent,
     LogoComponent,
     MainDashComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,

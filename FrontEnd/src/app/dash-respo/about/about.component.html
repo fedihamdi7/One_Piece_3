@@ -1,0 +1,24 @@
+<div class="contenu">
+  <h3>Change About </h3>
+
+  <div class="row">
+    <div class="col form">
+      <form [formGroup]="formAbout" (submit)="onAboutSubmit()">
+
+        <div class="form-group" style="width: 100%;">
+          <label for="about">About</label>
+          <input type="text"  class="form-control" id="about" formControlName="about" placeholder="Enter about club">
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+    <div class="col current">
+      <h5>Current About</h5>
+      <div class="currentLogo">
+        <p>{{ currentAbout }}</p>
+      </div>
+    </div>
+  </div>
+</div>
