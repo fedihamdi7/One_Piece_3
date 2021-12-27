@@ -24,13 +24,17 @@
         <div id="aboutus">
             
             <h1 class="title">About Us</h1>
-            <div class="line-desc"></div>
+           
             <p>{{club.description}}</p>
         
-            <div class="news">
-                <img src="assets/img/tunivisions_post.jpg" alt="">
-                <div class="news-desc">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum hic ullam, quia eaque, eos molestias quisquam impedit, aperiam doloribus animi accusantium. Veniam ipsa nihil natus ratione quasi similique asperiores accusamus consectetur, nam saepe mollitia ab sit, aliquid, illum deleniti. Facilis dolores ipsam, sed impedit eaque asperiores ut consequatur tempora dolorum voluptates possimus necessitatibus. Repellendus inventore architecto, est eius velit modi.</p>
+            <div class="news" *ngFor="let post of club.post">
+              
+                <img src="./../../../assets/img/club/{{post.post_img}}" alt="">
+              
+                
+                <div class="news-desc" style="margin-top:-10% ;" >
+                  <p style="font-weight: bold;font-size: 175%;">{{post.post_title}}</p>
+               <p >{{post.post_description}}</p>
                 </div>
         </div>
         </div>
