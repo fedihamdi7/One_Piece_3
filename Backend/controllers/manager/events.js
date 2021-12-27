@@ -41,3 +41,8 @@ exports.getStats = (req, res, next) => {
         ])
         .then(stats => res.json(stats[0]));
 }
+
+exports.getAbout = (req, res, next) => {
+    club.find({'_id':req.params.id},{'description':1,'_id':0})
+    .then(description => res.json(description));
+}

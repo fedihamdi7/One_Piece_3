@@ -15,6 +15,7 @@ export class ManagerService {
   private teamUpdated = new Subject<Team[]>();
   private head = this.getHeaders().headers;
   public logo = new Subject<string>();
+  public about = new Subject<string>();
   constructor( private http:HttpClient) { }
 
     getHeaders(){
@@ -214,4 +215,32 @@ console.log(teamData);
     return this.http.get(`http://localhost:3000/api/manager/${id}/stats`,{headers:this.head});
 
   }
+
+
+//////////////////////////////////////// About ////////////////////////////////////////
+
+getAbout(){
+  const club_id = JSON.parse(localStorage.getItem('user')).club_id;
+
+  this.http.get<any>(`http://localhost:3000/api/manager/${club_id}/about`,{headers:this.head}).subscribe(res=>{
+    this.about.next(res[0].description);
+
+  });
+}
+getAboutUpdateListener(){
+  return this.about.asObservable();
+}
+
+ChangeAbout(description:string){
+  const data= {description:description}
+  // const aboutData = new FormData();
+  // aboutData.append('about',about);
+  const id = JSON.parse(localStorage.getItem('user')).club_id;
+  console.log(this.head);
+  this.http.put(`http://localhost:3000/api/manager/${id}/about`,data,{headers:this.head})
+  .subscribe(res=>{
+    console.log(res);
+  });
+}
+
 }
