@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Club } from './club.model';
-import { clubs } from './clubs-list';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -25,30 +24,28 @@ export class ClubComponent implements OnInit, OnDestroy {
 
     this.clubSub = this.adminService.getClubsUpdateListener()
     .subscribe((clubs:any)=>{
-      console.log(clubs);
       
       this.clubslist = clubs;
     });
 
     this.formAdd = new FormGroup({
-      club_name: new FormControl(null,{validators:[Validators.required]}),
-      club_theme: new FormControl(null,{validators:[Validators.required]}),
-      about: new FormControl(null,{validators:[Validators.required]}),
-      club_img: new FormControl(null,{validators:[Validators.required]})
+      title: new FormControl(null,{validators:[Validators.required]}),
+      description: new FormControl(null,{validators:[Validators.required]}),
+      image: new FormControl(null,{validators:[Validators.required]})
     });
   }
 
-  // onImagePicked(club :Club){
-  //   const file = (club.target as HTMLInputElement).files[0];
-  //   this.formAdd.patchValue({club_img:file});
-  //   this.formAdd.get('club_img').updateValueAndValidity();
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imagePreview = reader.result as string;
-  //   };
-  //   reader.readAsDataURL(file);
+  onImagePicked(event :Event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.formAdd.patchValue({image:file});
+    this.formAdd.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 
-  // }
+  }
   async onAddSubmit(){
     await this.adminService.addClub(this.formAdd.value);
     this.showAddClubForm = false;
