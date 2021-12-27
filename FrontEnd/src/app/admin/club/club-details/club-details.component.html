@@ -10,12 +10,44 @@
       <p class="card-text">About us : {{club?.about}} </p>
 
       <div style="display: flex;gap: 15px;">
-      <a href="#" class="btn btn-primary">Edit</a>
-      <a href="#" class="btn btn-danger">Delete</a>
+        <a  class="btn btn-primary" (click)="showEditForm()">Edit</a>
+        <a  class="btn btn-danger" (click)="onDeleteClub()" >Delete</a>
     </div>
     </div>
   </div>
   
+<div class="edit" *ngIf="showClubEditForm">
+  <!-- create form -->
+  <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
+    <div class="form-group">
+      <label for="club_id">club ID</label>
+      <input type="text" class="form-control" id="club_id" formControlName="club_id" placeholder="Enter club id">
+    </div>
+    <div class="form-group">
+      <label for="club_name">club Name</label>
+      <input type="text" class="form-control" id="club_name" formControlName="club_name" placeholder="Enter club name">
+    </div>
+    <div class="form-group">
+      <label for="club_theme">club Theme : </label>
+      <input type="text" class="form-control" id="club_theme" formControlName="club_theme" placeholder="Enter club theme">
+    </div>
+    <div class="form-group">
+      <label for="about">club Description : </label>
+      <input type="text" class="form-control" id="about" formControlName="about" placeholder="Enter club description">
+    </div>
+    <div class="form-group">
+      <label for="club_img">club Image</label>
+      <input type="file" #filePicker  class="form-control" id="club_img" placeholder="Enter club image">
+      <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+        <img [src]="imagePreview" alt="">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+</div>
+
 
 
 
