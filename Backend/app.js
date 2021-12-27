@@ -32,7 +32,7 @@ app.use(cors());
 app.use('/api/auth', authRouter);
 app.use('/api/home',homeRouter);
 app.use('/api/manager',managerRouter);
-app.use('/api/allclubs',allclubRouter);
+app.use('/api/allclub',allclubRouter);
 app.use('/api/club',clubRouter);
 app.use('/api/admin',adminRouter);
 module.exports = app;

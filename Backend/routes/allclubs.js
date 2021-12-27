@@ -3,5 +3,5 @@ const router = express.Router();
 const allclubController = require('../controllers/allclub');
 
 
-router.get('/getAllClub/:id',allclubController.getAllClub);
+router.get('/getAllClub',allclubController.getAllClub);
 module.exports = router;

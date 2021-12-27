@@ -21,10 +21,12 @@ export class ClubComponent implements OnInit, OnDestroy {
   public showAddClubForm = false;
 
   ngOnInit(): void {
-    //this.adminService.getClubs(JSON.parse(this.adminId).club_id);
+    this.adminService.getClubs();
 
     this.clubSub = this.adminService.getClubsUpdateListener()
     .subscribe((clubs:any)=>{
+      console.log(clubs);
+      
       this.clubslist = clubs;
     });
 

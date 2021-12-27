@@ -14,9 +14,9 @@ export class AdminService {
 
   constructor( private http:HttpClient) { }
 
-    getClubs(id:string){
-      this.http.get<any>(`${this.API_URL}/${id}/club`).subscribe(res=>{
-        this.clubs = res[0].clubs;
+    getClubs(){
+      this.http.get<any>(`http://localhost:3000/api/allclub/getAllClub`).subscribe(res=>{
+        this.clubs = res;
         this.clubUpdated.next([...this.clubs]);
       });
     }
