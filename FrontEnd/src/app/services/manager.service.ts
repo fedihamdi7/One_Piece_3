@@ -12,7 +12,7 @@ import { Team } from '../dash-respo/team/team.model';
 export class ManagerService {
   private Events:EventType[];
   private TeamsList:Team[];
-  private PostList:Team[];
+  private PostList:Post[];
   private eventUpdated = new Subject<EventType[]>();
   private teamUpdated = new Subject<Team[]>();
   private postUpdated = new Subject<Post[]>();
@@ -286,8 +286,8 @@ console.log(postData);
     this.http.put(`http://localhost:3000/api/manager/${id}/post`,postData,{headers:this.head})
     .subscribe(res=>{
       const updatedPost = [...this.PostList];
-      const oldTeamIndex = updatedPost.findIndex(e=>e.id === post.id);
-      updatedPost[oldTeamIndex] = post;
+      const oldPostIndex = updatedPost.findIndex(e=>e.id === post.id);
+      updatedPost[oldPostIndex] = post;
       this.PostList = updatedPost;
       this.postUpdated.next([...this.PostList]);
 

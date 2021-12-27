@@ -16,7 +16,7 @@ const routes: Routes = [
     { path:'events/:id', component:EventDetailsComponent},
     { path :'change_logo', component:LogoComponent},
     { path :'change_about', component:AboutComponent},
-    { path :'change_post', component:PostComponent}
+    { path :'post', component:PostComponent}
   ]},
   { path:'team', component:TeamComponent},
   { path:'team/:id', component:TeamDetailsComponent},
