@@ -1,9 +1,9 @@
 <flash-messages class="flashfade"></flash-messages>
 <div class="container" id="container" #container>
   <div class="form-container sign-up-container">
-    <form (submit)="onSignUpSubmit()" [formGroup]="formSignUp">
-      <h1>Create Account</h1>
-      <span>or use your email for registration</span>
+    <form (submit)="onSignUpSubmit()" [formGroup]="formSignUp" style="margin-top: 0%;">
+      <h1 style="font-size:27px">Create Account</h1>
+      <!-- <span>or use your email for registration</span> -->
       <input type="text" placeholder="Name" formControlName="name" />
       <input type="email" placeholder="Email" formControlName="email" />
       <span class="warning" *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">Please
@@ -12,6 +12,17 @@
       <span class="warning"
       *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched">Password must be 6
       caractere</span>
+      <div class="form-group">
+        <!-- <label for="event_img">User Image</label> -->
+        <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="userimage" placeholder="Enter user image">
+      </div>
+      <div class="form-group" style="margin-bottom: 5%;margin-left: -65%;">
+        <label for="radio" style="margin-left: -49%;">Type : </label>
+        <select class="form-control" style="background-color: #eee;" id="type" formControlName="type" name="type">
+        <option value="user" [selected]="true" >User</option>
+        <option value="manager">Manager</option>
+      </select>
+      </div>
       <button type="submit" [disabled]="!formSignUp.valid">Sign Up</button>
     </form>
   </div>

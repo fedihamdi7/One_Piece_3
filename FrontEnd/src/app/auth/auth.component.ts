@@ -16,6 +16,7 @@ export class AuthComponent implements OnInit {
   password:string;
   formSignUp:FormGroup;
   formLogin:FormGroup;
+  imagePreview:string;
 
   constructor(private authService:AuthService, private router:Router,private flashMessagesService : FlashMessagesService) { }
 
@@ -23,7 +24,10 @@ export class AuthComponent implements OnInit {
     this.formSignUp= new FormGroup({
       name: new FormControl(null,{validators:[Validators.required]}),
       email: new FormControl(null,{validators:[Validators.required , Validators.email]}),
-      password: new FormControl(null,{validators:[Validators.required, Validators.minLength(6)]})
+      password: new FormControl(null,{validators:[Validators.required, Validators.minLength(6)]}),
+      type : new FormControl(null,{validators:[Validators.required]}),
+      user_img: new FormControl(null,{validators:[Validators.required]}),
+
     });
 
     this.formLogin= new FormGroup({
@@ -40,10 +44,23 @@ export class AuthComponent implements OnInit {
   }
 
   onSignUpSubmit(){
+    console.log(this.formSignUp.value.type);
+    if ( this.formSignUp.value.type == "user"){
     this.authService.signup(this.formSignUp.value,this.formSignUp);
   }
+  }
 
+  onImagePicked(event :Event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.formSignUp.patchValue({user_img:file});
+    this.formSignUp.get('user_img').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 
+  }
 
   // animation
   @ViewChild('signUp') signUpButton:ElementRef;

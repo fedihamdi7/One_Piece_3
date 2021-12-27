@@ -20,8 +20,14 @@ export class AuthService {
   constructor(private httpClient: HttpClient ,private router:Router,private flashMessagesService : FlashMessagesService) { }
 
   signup(user: User,form:FormGroup) {
+    const userData = new FormData();
+    userData.append('name',user.name);
+    userData.append('email',user.email);
+    userData.append('password',user.password);
+    userData.append('type',user.type);
+    userData.append('user_img',user.user_img);
 
-    this.httpClient.post<any>(`${this.API_URL}/auth/signup`, user).subscribe( (res):any =>{
+    this.httpClient.post<any>(`${this.API_URL}/auth/signup`, userData).subscribe( (res):any =>{
       if(res.status == 201) {
         form.reset();
         let element: HTMLElement = document.getElementById('signIn') as HTMLElement;
