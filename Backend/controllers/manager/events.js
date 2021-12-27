@@ -46,3 +46,12 @@ exports.getAbout = (req, res, next) => {
     club.find({'_id':req.params.id},{'description':1,'_id':0})
     .then(description => res.json(description));
 }
+
+exports.update = (req, res, next) => {
+    club.updateOne({'post.id':req.params.id},
+    {'$set':{
+        'post.$.post_title':req.body.post_title,
+        'post.$.post_description':req.body.post_description,        
+    }})
+    .then(post => res.json(post));
+}

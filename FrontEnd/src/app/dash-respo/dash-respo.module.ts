@@ -11,6 +11,7 @@ import { TeamDetailsComponent } from './team/team-details/team-details.component
 import { LogoComponent } from './logo/logo.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { AboutComponent } from './about/about.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AboutComponent } from './about/about.component';
     LogoComponent,
     MainDashComponent,
     AboutComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,
