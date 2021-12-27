@@ -1,15 +1,15 @@
 .card-style{
     width: 18rem;
-    left: 60vh;
-    margin-top: 6%;
+    left: 40vh;
+    margin-top: 1%;
   }
  
 
 .edit{
   width: 400px;
   position: absolute;
-  right: 12%;
-  top: 16%;
+  left: 70%;
+  bottom: 12%;
   padding: 15px;
   background-color: rgba(190, 190, 190, 0.37);
   border-radius: 10px;

@@ -6,8 +6,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">name</th>
-            <th scope="col">description</th>
-            <th scope="col">details</th>
+            <th scope="col">Description</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
        
@@ -29,15 +29,15 @@
     <!-- create form -->
     <form [formGroup]="formAdd" (submit)="onAddSubmit()">
       <div class="form-group">
-        <label for="title">club Name</label>
+        <label for="title">Club Name</label>
         <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter club name">
       </div>
       <div class="form-group">
-        <label for="description" >club Description : </label>
+        <label for="description" >Club Description : </label>
         <input type="text" class="form-control" id="description" formControlName="description" placeholder="Enter club description">
       </div>
       <div class="form-group">
-        <label for="image">club Image</label>
+        <label for="image">Club Image</label>
         <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="image" placeholder="Enter club image">
     <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
       <img [src]="imagePreview" alt="">
