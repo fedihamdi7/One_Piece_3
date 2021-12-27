@@ -12,11 +12,21 @@ export class AdminService {
 
   private clubs:Club[];
   private clubUpdated = new Subject<Club[]>();
+  private head = this.getHeaders().headers;
 
   constructor( private http:HttpClient) { }
-
+  getHeaders(){
+    const token = localStorage.getItem('id_token');
+    const id = JSON.parse(localStorage.getItem('user')).userId;
+    return {
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'userId': id
+      }
+    };
+  }
     getClubs(){
-      this.http.get<any>(`http://localhost:3000/api/allclub/getAllClub`).subscribe(res=>{
+      this.http.get<any>(`http://localhost:3000/api/allclub/getAllClub`,{headers:this.head}).subscribe(res=>{
         this.clubs = res;
         this.clubUpdated.next([...this.clubs]);
       });
@@ -33,13 +43,12 @@ export class AdminService {
     editClub(club:Club){
 
       const clubData = new FormData();
-      clubData.append('club_id',club.id);
-      clubData.append('club_name',club.name);
-      clubData.append('club_theme',club.theme);
-      clubData.append('about',club.about);
-      clubData.append('club_img',club.club_img);
+      clubData.append('club_id',club._id);
+      clubData.append('title',club.title);
+      clubData.append('description',club.description);
+      clubData.append('image',club.image);
 
-      this.http.put(`${this.API_URL}/${club.id}/clubs`,clubData)
+      this.http.put(`${this.API_URL}/${club._id}/clubs`,clubData,{headers:this.head})
       .subscribe(res=>{
         const updatedclubs = [...this.clubs];
         const oldClubIndex = updatedclubs.findIndex(c=>c.id === club.id);
@@ -52,15 +61,12 @@ export class AdminService {
 
     addClub(club:Club){
       const clubData = new FormData();
-      clubData.append('club_id',club.id);
-      clubData.append('club_name',club.name);
-      clubData.append('club_theme',club.theme);
-      clubData.append('about',club.about);
-      clubData.append('club_img',club.club_img);
-      clubData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
+      clubData.append('title',club.title);
+      clubData.append('description',club.description);
+      clubData.append('image',club.image);
 
 
-      this.http.post(`${this.API_URL}/${club.id}/clubs`,clubData)
+      this.http.post(`${this.API_URL}/clubs`,clubData,{headers:this.head})
       .subscribe(res=>{
         const updatedclubs = [...this.clubs];
         updatedclubs.push(club);
@@ -70,7 +76,7 @@ export class AdminService {
     }
 
     deleteClub(id:string){
-      this.http.delete(`${this.API_URL}/${id}/clubs`)
+      this.http.delete(`${this.API_URL}/${id}/clubs`,{headers:this.head})
       .subscribe(res=>{
         const updatedclubs = this.clubs.filter(c=>c.id !== id);
         this.clubs = updatedclubs;
@@ -78,10 +84,6 @@ export class AdminService {
 
       });
     }
-
-  getUsers(){
-    return this.http.get<any>(`${this.API_URL}/getUsers`);
-  }
 
 }
 

@@ -6,17 +6,17 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">name</th>
-            <th scope="col">theme</th>
-            <th scope="col">about</th>
+            <th scope="col">Description</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
        
         <tbody>
           <tr *ngFor="let club of clubslist; let i = index">
-            <th scope="row">{{club.name}}</th>
-            <td>{{club.theme}}</td>
-            <td>{{club.about}}</td>
-            <td><a><button type="button" routerLink="{{club.id}}">More Details</button></a></td>
+            <th scope="row">{{i+1}}</th>
+            <td>{{club.title}}</td>
+            <td>{{club.description}}</td>
+            <td><a><button type="button" routerLink="{{club._id}}">More Details</button></a></td>
           </tr>
         </tbody>
       </table>
@@ -29,20 +29,16 @@
     <!-- create form -->
     <form [formGroup]="formAdd" (submit)="onAddSubmit()">
       <div class="form-group">
-        <label for="club_name">club Name</label>
-        <input type="text" class="form-control" id="club_name" formControlName="club_name" placeholder="Enter club name">
+        <label for="title">Club Name</label>
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter club name">
       </div>
       <div class="form-group">
-        <label for="club_theme">club Theme : </label>
-        <input type="text" class="form-control" id="club_theme" formControlName="club_theme" placeholder="Enter club theme">
+        <label for="description" >Club Description : </label>
+        <input type="text" class="form-control" id="description" formControlName="description" placeholder="Enter club description">
       </div>
       <div class="form-group">
-        <label for="about">club Description : </label>
-        <input type="text" class="form-control" id="about" formControlName="about" placeholder="Enter club description">
-      </div>
-      <div class="form-group">
-        <label for="club_img">club Image</label>
-        <input type="file" class="form-control" id="club_img" placeholder="Enter club image">
+        <label for="image">Club Image</label>
+        <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="image" placeholder="Enter club image">
     <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
       <img [src]="imagePreview" alt="">
     </div>

@@ -5,7 +5,8 @@
 }
 button{
     background-color:rgba(131, 202, 235, 0.719);
-    color:grey;
+    color:black;
+    font-weight: 20px;
 }
 .table-margin{
     margin-top: 2%;

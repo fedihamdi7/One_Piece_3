@@ -13,10 +13,7 @@ exports.update = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
 
-        club.updateMany(
-            {},
-            { $pull: { club: { id: req.params.id } } }
-        )
+    club.deleteOne({_id:req.params.id})
         .then(result => res.json(result));
 
     
