@@ -19,20 +19,20 @@
   <!-- create form -->
   <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
     <div class="form-group">
-      <label for="club_id">club ID</label>
-      <input type="text" class="form-control" id="club_id" formControlName="club_id" placeholder="Enter club id">
+      <label for="club_id">Club ID</label>
+      <input type="text" class="form-control" id="club_id" formControlName="club_id" placeholder="Enter Club id">
     </div>
     <div class="form-group">
-      <label for="title">club Name</label>
-      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter club name">
+      <label for="title">Club Name</label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter Club name">
     </div>
     <div class="form-group">
-      <label for="description">club Description : </label>
-      <input type="text" class="form-control" id="description" formControlName="description" placeholder="Enter club description">
+      <label for="description">Club Description : </label>
+      <input type="text" class="form-control" id="description" formControlName="description" placeholder="Enter Club description">
     </div>
     <div class="form-group">
-      <label for="image">club Image</label>
-      <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="image" placeholder="Enter club image">
+      <label for="image">Club Image</label>
+      <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="image" placeholder="Enter Club image">
   <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
     <img [src]="imagePreview" alt="">
   </div>
