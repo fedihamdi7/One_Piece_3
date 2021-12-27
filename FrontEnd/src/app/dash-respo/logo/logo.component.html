@@ -1,0 +1,29 @@
+<div class="contenu">
+  <h3>Change Logo </h3>
+
+
+
+  <div class="row">
+    <div class="col form">
+      <form [formGroup]="formLogo" (submit)="onLogoSubmit()">
+
+        <div class="form-group" style="width: 100%;">
+          <label for="logo">Logo</label>
+          <input type="file" #filePicker (change)="onImagePicked($event)" class="form-control" id="logo"
+            placeholder="Enter logo">
+          <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+            <img [src]="imagePreview" alt="">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+    <div class="col current">
+      <h5>Current Logo</h5>
+      <div class="currentLogo">
+        <img src="./../../../../assets/img/{{ currentLogo }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Subscription } from 'rxjs';
+import { IsManagerGuard } from '../guards/is-manager.guard';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,22 +10,50 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit ,OnDestroy {
   private authListenerSubs : Subscription;
+  private typeListenerSubs : Subscription;
   userIsAuthenticated = false;
+  userType:string;
+  manager : boolean;
+  admin:boolean=false;
+
   constructor(
     public authService : AuthService,
-    private flashMessageService : FlashMessagesService) { }
+    ) { }
 
     ngOnInit(): void {
+      this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
+        this.userIsAuthenticated= isAuthenticated;
+      });
       const token = localStorage.getItem('id_token');
       if(token){
         this.userIsAuthenticated=true;
       }
-      this.authListenerSubs= this.authService.getAuthStatusListener().subscribe(isAuthenticated=>{
-        this.userIsAuthenticated= isAuthenticated;
+      const type = JSON.parse(localStorage.getItem('user')).type;
+      if(type=="manager"){
+        this.manager=true;
+      }
+      if(type=="admin"){
+        this.admin=true;
+      }
+      else{this.admin=false;}
+      this.typeListenerSubs = this.authService.getTypeListener().subscribe(type=>{
+        this.userType = type;
+
+        if(type=='manager'){
+          this.manager = true;
+        }
+        else{
+          this.manager = false;
+        }
       });
+
+
+
+
     }
     ngOnDestroy(): void {
-      this.authListenerSubs.unsubscribe();
+      // this.typeListenerSubs.unsubscribe();
+      // this.authListenerSubs.unsubscribe();
     }
   onLogoutClick() {
     this.authService.logout();

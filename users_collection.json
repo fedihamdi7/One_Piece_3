@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "61c4816c8f9a74a2b4fbf70b"
+  },
+  "name": "Fedi",
+  "email": "f@gmail",
+  "password": "$2b$10$dzY/IgeG99JxNAFQ9.uKr.QXvbI.ZOZHQre82AODfp8k5C9BNeDFy",
+  "__v": 0,
+  "club_id": "61c4add3843e59385edd5bd8",
+  "type": "manager"
+}]

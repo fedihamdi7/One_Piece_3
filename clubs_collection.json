@@ -1,0 +1,169 @@
+[{
+  "_id": {
+    "$oid": "61c4add3843e59385edd5bd8"
+  },
+  "id": "1",
+  "title": "4c",
+  "image": "4c.jpg",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
+  "events": [
+    {
+      "event_id": "1d1e3aae",
+      "event_name": "Gestion",
+      "event_date": "15-10-2020",
+      "event_img": "4c(2).jpg"
+    },
+    {
+      "event_id": "61c60f10b8bf0e84c3eb296b",
+      "event_name": "Allen Rose",
+      "event_date": "2000-04-30",
+      "event_img": "mcncom(2).jpg-1640448314100.jpg"
+    },
+    {
+      "event_id": "61c73871cc61e3e196e58e26",
+      "event_name": "NEw event12",
+      "event_date": "2021-12-02",
+      "event_img": "tunivisions(4).jpg-1640448323884.jpg"
+    }
+  ],
+  "team": [
+    {
+      "id": "1",
+      "team_name": "fedi",
+      "team_titre": "president",
+      "team_img": "4c.jpg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61c4add3843e59385edd5bd9"
+  },
+  "id": "1",
+  "title": "MCNCOM",
+  "image": "ieee.jpeg",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
+  "events": [
+    {
+      "event_date": "24-02-2020",
+      "event_img": "mcncom(1).jpg"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "mcncom(2).jpg"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "mcncom(3).jpg"
+    }
+  ],
+  "team": [
+    {
+      "id": "1",
+      "team_name": "fedi",
+      "team_titre": "president",
+      "team_img": "4c.jpg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61c4add3843e59385edd5bda"
+  },
+  "id": "1",
+  "title": "Tunivisions",
+  "image": "4c.jpg",
+  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
+  "events": [
+    {
+      "event_date": "24-02-2020",
+      "event_img": "tunivisions(1).jpg"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "tunivisions(2).jpg"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "tunivisions(3).jpg"
+    }
+  ],
+  "team": [
+    {
+      "id": "1",
+      "team_name": "fedi",
+      "team_titre": "president",
+      "team_img": "4c.jpg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    },
+    {
+      "id": "2",
+      "team_name": "eya",
+      "team_titre": "RH",
+      "team_img": "ieee.jpeg",
+      "team_fb": "aaaaaaa",
+      "team_insta": "aaaaa",
+      "team_linkedin": "aaaaa",
+      "team_twitter": "aaaaaaaaa"
+    }
+  ]
+}]

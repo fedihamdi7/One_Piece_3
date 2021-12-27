@@ -5,7 +5,7 @@ const ClubSchema = new mongoose.Schema({
     image : {type : String, required: false},
     description : {type : String, required: false},
     events : {type : Array , required: false},
-    teams : {type : Array , required: false},
+    team : {type : Array , required: false},
 });
 
 module.exports = mongoose.model('Club', ClubSchema);
