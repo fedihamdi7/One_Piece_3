@@ -1,49 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ManagerService } from 'src/app/services/manager.service';
+import { Post } from './post.model';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  public postList: any = [];
-  public fetchedpost;
-  formPost:FormGroup;
-  imagePreview:string;
-  currentImage:string;
-  currentTitle:string;
-  currentDescription:string;
-  dataSub : Subscription;
-  constructor(private managerService : ManagerService,private router:Router) { }
+  public post: any;
+  public postList: Post[] = [];
+  // public fetchedpost;
+  formPost: FormGroup;
+  imagePreview: string;
 
+  // currentImage:string;
+  // currentTitle:string;
+  // currentDescription:string;
+  dataSub: Subscription;
+  constructor(private route: ActivatedRoute, private managerService: ManagerService, private router: Router) { }
   ngOnInit(): void {
-    this.fetchedpost= this.managerService.getPostList();
-    this.managerService.getupdatedPostListener()
-    .subscribe(postList=>{
-      this.fetchedpost=postList;
-    });
-    this.formPost = new FormGroup({
-      post_img : new FormControl(null,{validators:[Validators.required]}),
-      post_description : new FormControl(null,{validators:[Validators.required]})
-    });
 
-    // this.dataSub = this.managerService.getupdatedPostListener()
-    // .subscribe(postlist=>{
-    //   this.fetchedpost=postlist;
-    // });
-  }
+    this.managerService.getPost();
+      this.managerService.getupdatedPostListener()
+        .subscribe(res => {
 
-  onPostSubmit(){
-    //  this.managerService.editPost(this.formPost.value);
-     this.router.navigate(['dash-respo/change_post']);
+          this.post = res[0];
+
+          this.formPost = new FormGroup({
+            post_title: new FormControl(res[0].post_title, { validators: [Validators.required] }),
+            post_img: new FormControl(res[0].post_img, { validators: [Validators.required] }),
+            post_description: new FormControl(res[0].post_description, { validators: [Validators.required] })
+          });
+        });
 
   }
-  onImagePicked(event :Event){
+
+  onPostSubmit() {
+
+      const club_id = JSON.parse(localStorage.getItem('user')).club_id;
+       this.managerService.editPost(this.formPost.value, club_id);
+
+  }
+  onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.formPost.patchValue({post_img:file});
+    this.formPost.patchValue({ post_img: file });
     this.formPost.get('post_img').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
@@ -52,6 +55,6 @@ export class PostComponent implements OnInit {
     reader.readAsDataURL(file);
 
   }
-  }
+}
 
 
