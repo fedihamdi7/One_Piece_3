@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { EventType } from '../dash-respo/events/event.model';
+import { Post } from '../dash-respo/post/post.model';
 import { Team } from '../dash-respo/team/team.model';
 
 
@@ -11,8 +12,10 @@ import { Team } from '../dash-respo/team/team.model';
 export class ManagerService {
   private Events:EventType[];
   private TeamsList:Team[];
+  private PostList:Team[];
   private eventUpdated = new Subject<EventType[]>();
   private teamUpdated = new Subject<Team[]>();
+  private postUpdated = new Subject<Post[]>();
   private head = this.getHeaders().headers;
   public logo = new Subject<string>();
   public about = new Subject<string>();
@@ -242,5 +245,55 @@ ChangeAbout(description:string){
     console.log(res);
   });
 }
+
+  //////////////////////////////////////// post  ////////////////////////////////////////
+
+getPostList(){
+  this.getPost();
+  return this.PostList;
+}
+
+getPost(){
+  const club_id=JSON.parse(localStorage.getItem('user')).club_id;
+  const user_id=JSON.parse(localStorage.getItem('user')).userId;
+  const token='Bearer '+localStorage.getItem('id_token');
+  const header={
+    'Authorization': token,
+    'userId':user_id
+  };
+   this.http.get(`http://localhost:3000/api/manager/${club_id}/post`,{headers:header})
+   .subscribe(
+    (resultat:any) => {
+      this.PostList = resultat.post;
+      this.postUpdated.next([...this.PostList]);
+    }
+  );
+  }
+  getupdatedPostListener(){
+    return this.postUpdated.asObservable();
+  }
+
+
+  editPost(post:Post,id:string){
+    const postData = new FormData();
+    postData.append('post_description',post.post_description);
+    postData.append('post_title',post.post_title);
+    postData.append('post_img',post.post_img);
+
+console.log(post);
+console.log(postData);
+
+    this.http.put(`http://localhost:3000/api/manager/${id}/post`,postData,{headers:this.head})
+    .subscribe(res=>{
+      const updatedPost = [...this.PostList];
+      const oldTeamIndex = updatedPost.findIndex(e=>e.id === post.id);
+      updatedPost[oldTeamIndex] = post;
+      this.PostList = updatedPost;
+      this.postUpdated.next([...this.PostList]);
+
+    });
+  }
+
+
 
 }

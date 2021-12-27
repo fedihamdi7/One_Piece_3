@@ -129,3 +129,20 @@ router.put('/:id/about',auth,(req, res, next) => {
 });
 
 router.get('/:id/about',auth, managerController.getAbout);
+
+//////////////////////////////////////// post ////////////////////////////////////////
+
+router.put('/:id/post',auth,multer({storage:storageEvents}).single("post_img") ,(req, res, next) => {
+    console.log(req.body);
+    console.log(req.params);
+    
+        const post={
+            id:req.params.id,
+            post_title:req.body.post_title,
+            post_description:req.body.post_description,
+            post_img:req.file.filename,
+        }
+        club.updateOne({'post.id':req.params.id},{'$set':{'post.$':post}})
+        .then(post => res.json(post));
+    });
+    
