@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AdminService } from '../../../services/admin.service';
+import { AdminUserService } from '../../../services/admin-user.service';
 import { User } from '../user.model';
 import { users } from "../users-list";
 
@@ -15,7 +15,7 @@ import { users } from "../users-list";
 export class UserdetailComponent implements OnInit {
 
 private eventSub : Subscription;
-constructor(private adminService : AdminService, private route:ActivatedRoute,private router:Router) { }
+constructor(private adminService : AdminUserService, private route:ActivatedRoute,private router:Router) { }
 
 imagePreview:string;
 formEdit:FormGroup;

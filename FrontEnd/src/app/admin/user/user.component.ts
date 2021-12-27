@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from './user.model';
 import { users } from './users-list';
-import { AdminService } from '../../services/admin.service';
+import { AdminUserService } from '../../services/admin-user.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   imagePreview:string;
   public usersList : User[] = users;
   public fetchedUser;
-  constructor(private userService : AdminService, private router:Router) { }
+  constructor(private userService : AdminUserService, private router:Router) { }
   formaddUser:FormGroup;
   public showAddUserForm = false;
 
@@ -25,6 +25,7 @@ export class UserComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (resultatUser) => {
         this.fetchedUser = resultatUser;
+        console.log(resultatUser);
       }
     );
     this.formaddUser = new FormGroup({

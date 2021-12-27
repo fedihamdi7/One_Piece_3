@@ -6,13 +6,13 @@ import { User } from '../admin/user/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class AdminUserService {
   private UsersList:User[];
   private userUpdated = new Subject<User[]>();
 
   constructor(private http:HttpClient) { }
 
-  API_URL: string = 'http://localhost:3000/api/admin';
+  API_URL: string = 'http://localhost:3000/api/admin_user';
  
 
   getUsers(){
@@ -21,7 +21,7 @@ export class AdminService {
 
 
   getUser(id:String){
-    return this.http.get(`http://localhost:3000/api/admin/getOneUser/`+id);
+    return this.http.get(`http://localhost:3000/api/admin_user/getOneUser/`+id);
     
     }
      getupdatedUserListener(){
@@ -40,7 +40,7 @@ export class AdminService {
     //  userData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
 
       //console.log(userData);
-       this.http.post(`http://localhost:3000/api/admin/addUser`,userData)
+       this.http.post(`http://localhost:3000/api/admin_user/addUser`,userData)
        .subscribe(res=>{
          console.log(res);
 
@@ -59,7 +59,7 @@ export class AdminService {
     //  userData.append('club_id',JSON.parse(localStorage.getItem('user')).club_id);
 
       //console.log(userData);
-       this.http.put(`http://localhost:3000/api/admin/editUser/`+id,userData)
+       this.http.put(`http://localhost:3000/api/admin_user/editUser/`+id,userData)
        .subscribe(res=>{
          console.log(res);
 
@@ -67,7 +67,7 @@ export class AdminService {
       }); 
     }
 DeleteUser(id:string){
-  this.http.delete(`http://localhost:3000/api/admin/${id}/deleteuser`)
+  this.http.delete(`http://localhost:3000/api/admin_user/${id}/deleteuser`)
   .subscribe(res=>{
     console.log(res);
 

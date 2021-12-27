@@ -3,11 +3,11 @@ const users = require('../../models/User');
 
 
 exports.getUsers = (req, res, next) =>{
-    users.find({},{_id:1,name:1,email:1,password:1})
-    .then(userResults => res.json(userResults));
+    users.find({},{_id:1,name:1,email:1,password:1,type:1,user_img:1})
+    .then(userResults => {res.json(userResults);console.log(userResults)});
 }
 exports.getOneUser = (req, res, next) =>{
-    users.find({_id:req.params.id},{_id:1,name:1,email:1,password:1})
+    users.find({_id:req.params.id},{_id:1,name:1,email:1,password:1,type:1,user_img:1})
     .then(userResults => res.json(userResults[0]));
 }
 
