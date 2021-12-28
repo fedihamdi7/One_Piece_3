@@ -21,11 +21,12 @@ const storageEvents = multer.diskStorage({
     filename: function (req, file, cb) {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext= MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        cb(null, Date.now()+ '-' +name);
     }
 });
 
 router.post('/login', authController.login);
+
 
 router.post('/signup',multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
     bcrypt.hash(req.body.password, 10)
