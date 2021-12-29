@@ -13,12 +13,12 @@ const MIME_TYPE_MAP = {
 };
 const storageEvents = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './../FrontEnd/src/assets/img');
+        cb(null, './../FrontEnd/src/assets/img/avatar');
     },
     filename: function (req, file, cb) {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext= MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        cb(null, Date.now()+ '-' +name);
     }
 });
 

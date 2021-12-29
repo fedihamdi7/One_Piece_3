@@ -19,7 +19,7 @@ const storageEvents = multer.diskStorage({
     filename: function (req, file, cb) {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext= MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        cb(null, Date.now()+ '-' +name);
     }
 });
 const storagePosts = multer.diskStorage({
@@ -29,17 +29,17 @@ const storagePosts = multer.diskStorage({
     filename: function (req, file, cb) {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext= MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        cb(null, Date.now()+ '-' +name);
     }
 });
 const storageLogo = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './../FrontEnd/src/assets/img');
+        cb(null, './../FrontEnd/src/assets/img/club');
     },
     filename: function (req, file, cb) {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const ext= MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        cb(null, Date.now()+ '-' +name);
     }
 });
 

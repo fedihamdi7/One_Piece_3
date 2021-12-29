@@ -14,7 +14,17 @@ const MIME_TYPE_MAP = {
     'image/jpeg': 'jpg',
     'image/jpg': 'jpg'
 };
-const storageEvents = multer.diskStorage({
+const storageUser = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './../FrontEnd/src/assets/img/avatar');
+    },
+    filename: function (req, file, cb) {
+        const name = file.originalname.toLowerCase().split(' ').join('-');
+        const ext= MIME_TYPE_MAP[file.mimetype];
+        cb(null, Date.now()+ '-' +name);
+    }
+});
+const storageClub = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './../FrontEnd/src/assets/img/club');
     },
@@ -28,7 +38,7 @@ const storageEvents = multer.diskStorage({
 router.post('/login', authController.login);
 
 
-router.post('/signup',multer({storage:storageEvents}).single("user_img") ,(req, res, next) => {
+router.post('/signup',multer({storage:storageUser}).single("user_img") ,(req, res, next) => {
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
       type="";
@@ -66,7 +76,7 @@ router.post('/signup',multer({storage:storageEvents}).single("user_img") ,(req, 
 
 
 
-router.post('/clubManager',multer({storage:storageEvents}).single("image") ,(req, res, next) => {
+router.post('/clubManager',multer({storage:storageClub}).single("image") ,(req, res, next) => {
 
   const club =new Club ({
     club_id: mongoose.Types.ObjectId().toString(),
