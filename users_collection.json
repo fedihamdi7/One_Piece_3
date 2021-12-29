@@ -1,11 +1,33 @@
 [{
   "_id": {
-    "$oid": "61c4816c8f9a74a2b4fbf70b"
+    "$oid": "61ca20505abd772bbaf42947"
   },
-  "name": "Fedi",
+  "name": "Ex aliquam quo enim ",
+  "email": "admin@g",
+  "password": "$2b$10$.F1cK0OqvYyXt.GbE8UfXOS2iKscorCYb8AaN6L2ET3BUB7CBc3Ae",
+  "type": "admin",
+  "user_img": "fedi.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61ca3766f86a493f5b283d7e"
+  },
+  "name": "Testaah",
+  "email": "fedi@g",
+  "password": "$2b$10$X7V../W.y/3MJAg/67vhKuz1bRjBbZ0BzLtLGiRuxUsxh8aFGy5H2",
+  "type": "admin",
+  "user_img": "fedi.jpg-1640642406267.jpg",
+  "__v": 0,
+  "club_id": "61ca3776f86a493f5b283d81"
+},{
+  "_id": {
+    "$oid": "61cbbba88ec8e48aeeb59e8b"
+  },
+  "name": "Fedi Hamdi",
   "email": "f@gmail",
   "password": "$2b$10$dzY/IgeG99JxNAFQ9.uKr.QXvbI.ZOZHQre82AODfp8k5C9BNeDFy",
   "__v": 0,
-  "club_id": "61c4add3843e59385edd5bd8",
-  "type": "manager"
+  "club_id": "61c4add3843e59385edd5bd9",
+  "type": "manager",
+  "user_img": "fedi.jpg-1640741592565.jpg"
 }]

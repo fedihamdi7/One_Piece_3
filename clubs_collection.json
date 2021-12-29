@@ -1,169 +1,79 @@
 [{
   "_id": {
-    "$oid": "61c4add3843e59385edd5bd8"
-  },
-  "id": "1",
-  "title": "4c",
-  "image": "4c.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
-  "events": [
-    {
-      "event_id": "1d1e3aae",
-      "event_name": "Gestion",
-      "event_date": "15-10-2020",
-      "event_img": "4c(2).jpg"
-    },
-    {
-      "event_id": "61c60f10b8bf0e84c3eb296b",
-      "event_name": "Allen Rose",
-      "event_date": "2000-04-30",
-      "event_img": "mcncom(2).jpg-1640448314100.jpg"
-    },
-    {
-      "event_id": "61c73871cc61e3e196e58e26",
-      "event_name": "NEw event12",
-      "event_date": "2021-12-02",
-      "event_img": "tunivisions(4).jpg-1640448323884.jpg"
-    }
-  ],
-  "team": [
-    {
-      "id": "1",
-      "team_name": "fedi",
-      "team_titre": "president",
-      "team_img": "4c.jpg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    },
-    {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    },
-    {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    }
-  ]
-},{
-  "_id": {
     "$oid": "61c4add3843e59385edd5bd9"
   },
-  "id": "1",
   "title": "MCNCOM",
-  "image": "ieee.jpeg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
+  "image": "mcncom.png",
+  "description": "The musketeers clubs for networking and communication Le projet Musketeers est une action bénévole lancée le 20 novembre 2016 ciblant les jeunes : étudiants, demandeur d'emploi ou même employés",
   "events": [
     {
       "event_date": "24-02-2020",
-      "event_img": "mcncom(1).jpg"
+      "event_name": "Inesting in Human capital",
+      "event_img": "mcncom(1).jpg",
+      "event_id": {
+        "$oid": "61cbb6458ec8e48aeeb59e77"
+      }
     },
     {
       "event_date": "52-02-2020",
-      "event_img": "mcncom(2).jpg"
+      "event_img": "mcncom(2).jpg",
+      "event_id": {
+        "$oid": "61cbb64a8ec8e48aeeb59e78"
+      },
+      "event_name": "Gerer Le Stress"
     },
     {
       "event_date": "52-02-2020",
-      "event_img": "mcncom(3).jpg"
+      "event_img": "mcncom(3).jpg",
+      "event_id": {
+        "$oid": "61cbb64e8ec8e48aeeb59e79"
+      },
+      "event_name": "Digital Marketing"
     }
   ],
   "team": [
     {
-      "id": "1",
-      "team_name": "fedi",
+      "team_id": {
+        "$oid": "61cbb6598ec8e48aeeb59e7a"
+      },
+      "team_name": "Hosni Hazem",
       "team_titre": "president",
-      "team_img": "4c.jpg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
+      "team_img": "mcncom_team(1).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
     },
     {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
+      "team_id": {
+        "$oid": "61cbb65d8ec8e48aeeb59e7b"
+      },
+      "team_name": "Feriel khammesi",
+      "team_titre": "Media Manager",
+      "team_img": "mcncom_team(2).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
     },
     {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "61c4add3843e59385edd5bda"
-  },
-  "id": "1",
-  "title": "Tunivisions",
-  "image": "4c.jpg",
-  "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, at aperiam, dolorem consequuntur cupiditate, debitis facere dolore harum non natus quae saepe eveniet mollitia eligendi ullam labore velit reprehenderit vel.",
-  "events": [
-    {
-      "event_date": "24-02-2020",
-      "event_img": "tunivisions(1).jpg"
-    },
-    {
-      "event_date": "52-02-2020",
-      "event_img": "tunivisions(2).jpg"
-    },
-    {
-      "event_date": "52-02-2020",
-      "event_img": "tunivisions(3).jpg"
+      "team_id": {
+        "$oid": "61cbb6618ec8e48aeeb59e7c"
+      },
+      "team_name": "Jihed Ben Kahla",
+      "team_titre": "Logistics Manager",
+      "team_img": "mcncom_team(3).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
     }
   ],
-  "team": [
+  "post": [
     {
-      "id": "1",
-      "team_name": "fedi",
-      "team_titre": "president",
-      "team_img": "4c.jpg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    },
-    {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
-    },
-    {
-      "id": "2",
-      "team_name": "eya",
-      "team_titre": "RH",
-      "team_img": "ieee.jpeg",
-      "team_fb": "aaaaaaa",
-      "team_insta": "aaaaa",
-      "team_linkedin": "aaaaa",
-      "team_twitter": "aaaaaaaaa"
+      "post_title": "News",
+      "post_description": "this is a post",
+      "post_img": "mcncom_post.jpg"
     }
   ]
 }]
