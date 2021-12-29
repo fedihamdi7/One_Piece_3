@@ -17,33 +17,33 @@
                 <li> <a href="#contactus"> Contact Us </a> </li>
             </ul>
         </div>
-        
+
     </div>
 
     <div class="contenu" >
         <div id="aboutus">
-            
+
             <h1 class="title">About Us</h1>
-           
+
             <p>{{club.description}}</p>
-        
+
             <div class="news" *ngFor="let post of club.post">
-              
-                <img src="./../../../assets/img/club/{{post.post_img}}" alt="">
-              
-                
+
+                <img src="./../../../assets/img/posts/{{post.post_img}}" alt="">
+
+
                 <div class="news-desc" style="margin-top:-10% ;" >
                   <p style="font-weight: bold;font-size: 175%;">{{post.post_title}}</p>
                <p >{{post.post_description}}</p>
                 </div>
         </div>
         </div>
-        
+
         <div id="ligne"></div>
         <div id="events">
             <h1 class="title" >Events</h1>
-                 
-                 
+
+
             <div class="events"  >
               <!-- <h1 class="title-events">Latest Events</h1> -->
               <div class="wrapper">
@@ -55,7 +55,7 @@
                   <div class="img img-{{i+1}}" *ngFor="let event of club.events;let i=index;">
                   <img src="./../../../assets/img/events/{{event.event_img}}" alt="">
                   </div>
-                 
+
                   <div class="sliders">
                     <label for="one" class="one"></label>
                     <label for="two" class="two"></label>
@@ -73,7 +73,7 @@
            <div id="teams-cards">
                 <div class="container" *ngFor="let team of club.team">
                     <div class="image" >
-                    <img src="./../../../assets/img/{{team.team_img}}">
+                    <img src="./../../../assets/img/team/{{team.team_img}}">
                     </div>
                     <div class="content">
                     <div class="info">
@@ -83,16 +83,16 @@
                         <span> {{team.team_titre}}</span>
                     </div>
                     </div>
-                 
+
                     <ul>
                     <li><a href="{{team.team_fb}}"><i  style="font-size:52px;color: #1d2434;" class="bi bi-facebook"></i></a></li>
                     <li><a href="{{team.team_insta}}"><i  style="font-size:52px;color: #1d2434;" class="bi bi-linkedin"></i></a></li>
                     <li><a href="{{team.team_linkedin}}"><i  style="font-size:53px;color: #1d2434;" class="bi bi-github"></i></a></li>
                     <li><a href="{{team.team_twitter}}"><i  style="font-size:50px;color: #1d2434;" class="bi bi-instagram"></i></a></li>
-                  
+
                     </ul>
                 </div>
-              
+
 
         <div id="ligne"></div>
         <div id="contactus">
@@ -144,7 +144,7 @@
         </div>
     </div>
 
-       
+
     </div>
 
 
@@ -157,7 +157,7 @@
       items : 3,
     });
  </script>
- 
+
 
 
 

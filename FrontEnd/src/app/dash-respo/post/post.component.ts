@@ -23,20 +23,27 @@ export class PostComponent implements OnInit {
   constructor(private route: ActivatedRoute, private managerService: ManagerService, private router: Router) { }
   ngOnInit(): void {
 
+    this.formPost = new FormGroup({
+      post_title: new FormControl(null, { validators: [Validators.required] }),
+      post_img: new FormControl(null, { validators: [Validators.required] }),
+      post_description: new FormControl(null, { validators: [Validators.required] })
+    });
     this.managerService.getPost();
-      this.managerService.getupdatedPostListener()
-        .subscribe(res => {
+    this.managerService.getupdatedPostListener()
+    .subscribe(res => {
+      if (res != null) {
 
-          this.post = res[0];
 
-          this.formPost = new FormGroup({
-            post_title: new FormControl(res[0].post_title, { validators: [Validators.required] }),
-            post_img: new FormControl(res[0].post_img, { validators: [Validators.required] }),
-            post_description: new FormControl(res[0].post_description, { validators: [Validators.required] })
-          });
+      this.post = res[0];
+      this.formPost = new FormGroup({
+        post_title: new FormControl(res[0].post_title, { validators: [Validators.required] }),
+        post_img: new FormControl(res[0].post_img, { validators: [Validators.required] }),
+        post_description: new FormControl(res[0].post_description, { validators: [Validators.required] })
+      });
+    }
         });
+}
 
-  }
 
   onPostSubmit() {
 

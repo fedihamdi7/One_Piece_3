@@ -42,6 +42,16 @@ const storageLogo = multer.diskStorage({
         cb(null, Date.now()+ '-' +name);
     }
 });
+const storageTeam = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './../FrontEnd/src/assets/img/team');
+    },
+    filename: function (req, file, cb) {
+        const name = file.originalname.toLowerCase().split(' ').join('-');
+        const ext= MIME_TYPE_MAP[file.mimetype];
+        cb(null, Date.now()+ '-' +name);
+    }
+});
 
 
 //////////////////////////////////////// Events ////////////////////////////////////////
@@ -90,9 +100,10 @@ router.get('/:id/logo',auth, managerController.getLogo);
 
 //////////////////////////////////////// Team ////////////////////////////////////////
 router.get('/:id/team',auth, teamController.get);
-router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(req, res, next) =>{
+router.post('/:id/team',auth,multer({storage:storageTeam}).single("team_img"),(req, res, next) =>{
+
     const team={
-        id:mongoose.Types.ObjectId().toString(),
+        team_id:mongoose.Types.ObjectId().toString(),
         team_name:req.body.team_name,
         team_titre:req.body.team_titre,
         team_img:req.file.filename,
@@ -103,16 +114,14 @@ router.post('/:id/team',auth,multer({storage:storageLogo}).single("team_img"),(r
     }
  
     club.updateOne({'_id':req.params.id},{'$push':{'team':team}})
-    .then(Addedteam => {res.json(Addedteam); console.log(Addedteam);});
+    .then(Addedteam => {res.json(Addedteam);});
 } );
 module.exports = router;
 
-router.put('/:id/team',auth,multer({storage:storageEvents}).single("team_img") ,(req, res, next) => {
-console.log(req.body);
-console.log(req.params);
+router.put('/:id/team',auth,multer({storage:storageTeam}).single("team_img") ,(req, res, next) => {
 
     const team={
-        id:req.params.id,
+        team_id:req.params.id,
         team_name:req.body.team_name,
         team_titre:req.body.team_titre,
         team_img:req.file.filename,
@@ -121,8 +130,8 @@ console.log(req.params);
         team_linkedin:req.body.team_linkedin,
         team_twitter:req.body.team_twitter,
     }
-    club.updateOne({'team.id':req.params.id},{'$set':{'team.$':team}})
-    .then(team => res.json(team));
+    club.updateOne({'team.team_id':req.params.id},{'$set':{'team.$':team}})
+    .then(team => {res.json(team); });
 });
 
 router.delete('/:id/team',auth, teamController.delete);
@@ -150,7 +159,7 @@ router.put('/:id/post',auth,multer({storage:storagePosts}).single("post_img") ,(
             post_img:req.file.filename,
         }
         club.updateOne({'_id':req.params.id},{'$set':{'post':post}})
-        .then(post => {res.json(post); console.log(post);});
+        .then(post => {res.json(post);});
     });
     
 router.get('/:id/post',auth,(req, res, next) => {
