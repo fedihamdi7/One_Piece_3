@@ -1,6 +1,7 @@
 export interface Team
 {
   id?:string;
+  team_id?:string;
   team_name?:string;
   team_img?:string;
   team_titre?:string;

@@ -3,25 +3,25 @@
     <div class="container d-flex justify-content-center">
         <div class="card p-3 py-4">
             <div class="text-center"> <img src="./../../../../assets/img/{{ user?.user_img }}" width="100" class="rounded-circle">
-                <h3 class="mt-2">{{ user?.name }}</h3> 
+                <h3 class="mt-2">{{ user?.name }}</h3>
                 <div class="row mt-3 mb-3">
                     <div class="col-md-12">
                        <span class="num"><strong>Email : </strong>{{ user?.email }}</span>
                     </div>
-                
+
                     <div class="col-md-4">
-                     
+
                     </div>
                 </div>
                 <hr class="line"> <small class="mt-4"><strong>Type : </strong>{{ user?.type }}</small>
-            
+
             </div>
         </div>
     </div>
 </div> -->
 <div class="contenu">
     <div class="card card-style" style="width: 18rem;">
-      <img src="./../../../../assets/img/{{user?.user_img}}" class="card-img-top" style="height: 350px;" alt="image">
+      <img src="./../../../../assets/img/avatar/{{user?.user_img}}" class="card-img-top" style="height: 350px;" alt="image">
       <div class="card-body">
         <h5 class="card-title">User {{ user?.name }} </h5>
         <p class="card-text">Email :{{ user?.email }} </p>
@@ -32,8 +32,8 @@
       </div>
       </div>
     </div>
-  
-  
+
+
   <div class="edit" *ngIf="showEventEditForm">
     <!-- create form -->
     <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
@@ -45,7 +45,7 @@
             <label for="email">User Email : </label>
             <input type="text" class="form-control" id="email" formControlName="email" placeholder="Enter user email">
           </div>
-          
+
           <div class="form-group">
             <label for="radio">User type : </label>
             <!-- <input type="text" class="form-control" id="type" formControlName="type" placeholder="Enter user type"> -->
@@ -64,8 +64,8 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  
+
   </div>
-  
-  
+
+
 

@@ -242,7 +242,7 @@ ChangeAbout(description:string){
 
   this.http.put(`http://localhost:3000/api/manager/${id}/about`,data,{headers:this.head})
   .subscribe(res=>{
- 
+    this.about.next(description);
   });
 }
 
@@ -285,11 +285,11 @@ getPost(){
     .subscribe(res=>{
       console.log(res);
 
-      // const updatedPost = [...this.PostList];
-      // const oldPostIndex = updatedPost.findIndex(e=>e.id === post.id);
-      // updatedPost[oldPostIndex] = post;
-      // this.PostList = updatedPost;
-      // this.postUpdated.next([...this.PostList]);
+      const updatedPost = [...this.PostList];
+      const oldPostIndex = updatedPost.findIndex(e=>e.id === post.id);
+      updatedPost[oldPostIndex] = post;
+      this.PostList = updatedPost;
+      this.postUpdated.next([...this.PostList]);
 
     });
   }

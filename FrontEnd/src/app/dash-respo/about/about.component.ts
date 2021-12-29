@@ -29,7 +29,10 @@ export class AboutComponent implements OnInit {
 
   onAboutSubmit(){
     this.managerService.ChangeAbout(this.formAbout.value.about);
-    console.log(this.formAbout.value.about);
+    this.AboutSub = this.managerService.getAboutUpdateListener()
+    .subscribe((res:any)=>{
+      this.currentAbout = res;
+    });
 
   }
   }

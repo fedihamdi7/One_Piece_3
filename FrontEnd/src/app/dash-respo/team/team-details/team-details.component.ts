@@ -25,8 +25,10 @@ export class TeamDetailsComponent implements OnInit {
       const teamId=params.get("id");
       this.managerService.getupdatedTeamListener()
       .subscribe(res => {
+        console.log(res);
+
         const teamList = res;
-        this.team = teamList.find(t=>t.id==teamId);
+        this.team = teamList.find(t=>t.team_id==teamId);
         this.formEdit = new FormGroup({
           team_id: new FormControl(this.team.id,{validators:[Validators.required]}),
           team_name: new FormControl(this.team.team_name,{validators:[Validators.required]}),

@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let event of eventsList; let i = index">
-        <th scope="row">{{event.event_id}} </th>
+        <th scope="row">{{i+1}} </th>
         <td>{{event.event_name}}</td>
         <td>{{event.event_date}}</td>
         <td> <a> <button  type="button" routerLink="{{event.event_id}}" class="btn btn-info"> Details </button> </a></td>
