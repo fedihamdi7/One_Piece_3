@@ -8,6 +8,7 @@ import { UserdetailComponent } from './user/userdetail/userdetail.component';
 import { ClubComponent } from './club/club.component';
 import { ClubDetailsComponent } from './club/club-details/club-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RequestComponent } from './request/request.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     UserdetailComponent,
     ClubComponent,
-    ClubDetailsComponent
+    ClubDetailsComponent,
+    RequestComponent
   ],
   imports: [
     CommonModule,

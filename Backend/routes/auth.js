@@ -83,12 +83,13 @@ router.post('/clubManager',multer({storage:storageClub}).single("image") ,(req, 
     title: req.body.title,
     description: req.body.description,
     image: req.file.filename,
+    active : false
 }
 );
 club.save()
 .then(AddedClub => {
   // update user and add club id
-  User.updateOne({'_id':req.headers.user_id},{'$set':{ 'club_id': mongoose.Types.ObjectId(AddedClub._id).toString(),'type':'manager'}})
+  User.updateOne({'_id':req.headers.user_id},{'$set':{ 'club_id': mongoose.Types.ObjectId(AddedClub._id).toString(),'type':'pending'}})
   .then(user => {res.json(user);});
   // res.json(AddedClub); 
   // console.log(mongoose.Types.ObjectId(AddedClub._id).toString());

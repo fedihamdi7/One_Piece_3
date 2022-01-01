@@ -5,13 +5,15 @@ import { AdminComponent } from './admin.component';
 import { ClubDetailsComponent } from './club/club-details/club-details.component';
 import { UserComponent } from './user/user.component';
 import { UserdetailComponent } from './user/userdetail/userdetail.component';
+import { RequestComponent } from './request/request.component';
 
 const routes: Routes = [
 { path: '', component: AdminComponent },
 { path:'user', component:UserComponent},
 { path:'user/:id', component:UserdetailComponent},
 { path:'club', component:ClubComponent},
-{ path:'club/:id', component:ClubDetailsComponent}
+{ path:'club/:id', component:ClubDetailsComponent},
+{ path:'request', component:RequestComponent}
 ];
 
 @NgModule({

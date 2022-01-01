@@ -1,0 +1,31 @@
+<app-admin></app-admin>
+
+<div class="contenu">
+  <a class="btn btn-success add-btn"  role="button" > Add User</a>
+  <!-- (click)="onClickShowForm()" -->
+  <table class="table table-margin">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Club Name</th>
+        <th scope="col">Manager</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pending of requests; let i = index">
+        <th scope="row" style="width: 120px;">{{pending.club_name}} </th>
+        <td style="width: 160px;">{{pending.user}}</td>
+        <td style="width: auto;">{{pending.club_description}}</td>
+        <td style="width: 200px;">
+           <button  type="button" (click)="acceptRequest(pending.user_id,pending.club_id)" class="btn btn-success"> Accept </button>
+           <button style="margin-left:5px"  type="button" (click)="declineRequest(pending.user_id,pending.club_id)"  class="btn btn-danger"> Decline </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+

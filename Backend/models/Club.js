@@ -7,6 +7,7 @@ const ClubSchema = new mongoose.Schema({
     events : {type : Array , required: false},
     team : {type : Array , required: false},
     post : {type : Array , required: false},
+    active : {type : String , required: false},
 });
 
 module.exports = mongoose.model('Club', ClubSchema);
