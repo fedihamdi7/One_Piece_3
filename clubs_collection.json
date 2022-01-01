@@ -4,15 +4,90 @@
   },
   "title": "MCNCOM",
   "image": "mcncom.png",
+  "description": "The musketeers clubs for networking and communication Le projet Musketeers est une action bénévole lancée le 20 novembre 2016 ciblant les jeunes : étudiants, demandeur d'emploi ou même",
+  "events": [
+    {
+      "event_id": {
+        "$oid": "61cbb6458ec8e48aeeb59e77"
+      },
+      "event_name": "Inesting in Human Capital ",
+      "event_date": "24-02-2020",
+      "event_img": "mcncom(1).jpg"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "mcncom(2).jpg",
+      "event_id": {
+        "$oid": "61cbb64a8ec8e48aeeb59e78"
+      },
+      "event_name": "Gerer Le Stress"
+    },
+    {
+      "event_date": "52-02-2020",
+      "event_img": "mcncom(3).jpg",
+      "event_id": {
+        "$oid": "61cbb64e8ec8e48aeeb59e79"
+      },
+      "event_name": "Digital Marketing"
+    }
+  ],
+  "team": [
+    {
+      "team_id": "61cbb6598ec8e48aeeb59e7a",
+      "team_name": "Hosni Hazem",
+      "team_titre": "president",
+      "team_img": "mcncom_team(1).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
+    },
+    {
+      "team_id": {
+        "$oid": "61cbb65d8ec8e48aeeb59e7b"
+      },
+      "team_name": "Feriel khammesi",
+      "team_titre": "Media Manager",
+      "team_img": "mcncom_team(2).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
+    },
+    {
+      "team_id": {
+        "$oid": "61cbb6618ec8e48aeeb59e7c"
+      },
+      "team_name": "Jihed Ben Kahla",
+      "team_titre": "Logistics Manager",
+      "team_img": "mcncom_team(3).jpg",
+      "team_fb": "xx",
+      "team_insta": "xxx",
+      "team_linkedin": "xxxx",
+      "team_twitter": "xxx"
+    }
+  ],
+  "post": [
+    {
+      "post_title": "News",
+      "post_description": "this is a post",
+      "post_img": "mcncom_post.jpg"
+    }
+  ],
+  "active": "true"
+},{
+  "_id": {
+    "$oid": "61cdd2574ffb824614270352"
+  },
+  "title": "Ieee",
+  "image": "ieee.jpeg",
   "description": "The musketeers clubs for networking and communication Le projet Musketeers est une action bénévole lancée le 20 novembre 2016 ciblant les jeunes : étudiants, demandeur d'emploi ou même employés",
   "events": [
     {
+      "event_id": "61cbb6458ec8e48aeeb59e77",
+      "event_name": "Inesting in Human ",
       "event_date": "24-02-2020",
-      "event_name": "Inesting in Human capital",
-      "event_img": "mcncom(1).jpg",
-      "event_id": {
-        "$oid": "61cbb6458ec8e48aeeb59e77"
-      }
+      "event_img": "1640905537888-fedi.jpg"
     },
     {
       "event_date": "52-02-2020",
@@ -75,5 +150,6 @@
       "post_description": "this is a post",
       "post_img": "mcncom_post.jpg"
     }
-  ]
+  ],
+  "active": "true"
 }]

@@ -15,8 +15,8 @@
   "name": "Testaah",
   "email": "fedi@g",
   "password": "$2b$10$X7V../W.y/3MJAg/67vhKuz1bRjBbZ0BzLtLGiRuxUsxh8aFGy5H2",
-  "type": "admin",
-  "user_img": "fedi.jpg-1640642406267.jpg",
+  "type": "manager",
+  "user_img": "fedi.jpg",
   "__v": 0,
   "club_id": "61ca3776f86a493f5b283d81"
 },{
@@ -29,5 +29,15 @@
   "__v": 0,
   "club_id": "61c4add3843e59385edd5bd9",
   "type": "manager",
-  "user_img": "fedi.jpg-1640741592565.jpg"
+  "user_img": "fedi.jpg"
+},{
+  "_id": {
+    "$oid": "61d0a5bf81d652bae75e22ae"
+  },
+  "name": "Odit comm",
+  "email": "admin@mail",
+  "password": "$2b$10$zLiKL8IdYMqEOX/Pa1RG/eq9TDCT.46eaEmJYCeTOnZJwF5otMI42",
+  "type": "admin",
+  "user_img": "ff.jpg",
+  "__v": 0
 }]
