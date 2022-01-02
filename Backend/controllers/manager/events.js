@@ -37,9 +37,11 @@ exports.getLogo = (req, res, next) => {
 exports.getStats = (req, res, next) => {
     club.aggregate([
         {$match:{_id :mongoose.Types.ObjectId(req.params.id)}},
-        {$project : {"events" : {$size :"$events"},_id:0}}
+        {$project : {"events" : {$size :"$events"},_id:0, "teams" : {$size :"$team"},title:1}}
         ])
-        .then(stats => res.json(stats[0]));
+        .then(stats => {
+            res.json(stats[0]);      
+        });
 }
 
 exports.getAbout = (req, res, next) => {

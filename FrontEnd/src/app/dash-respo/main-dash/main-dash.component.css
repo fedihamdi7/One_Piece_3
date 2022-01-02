@@ -4,7 +4,58 @@
 
 h3{
   margin: 2%;
+  font-weight: 400;
 }
 .row{
   width: 82vw;
 }
+span{
+  font-weight: bold;
+}
+
+.userAvatar img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 2%;
+}
+
+/* .userAvatar{
+  position: absolute;
+  right: 5%;
+} */
+
+.contenu {
+  position: relative;
+}
+.profileCard{
+  position: absolute;
+  background: rgba(196, 196, 196, 0.23);
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 28px;
+  top: 5%;
+  right: 5%;
+  padding: 5%;
+  border-radius: 15px;
+  height: 80vh;
+}
+.userName{
+  text-align: center;
+}
+.userName h3{
+  font-size: 180%;
+  font-weight: bold;
+}
+
+.infos{
+  margin-top: 15%;
+  margin-left: -10%;
+}
+
+.infos p{
+  margin-left: 5%;
+}
+.infos p a {
+  text-decoration: none;
+}
+

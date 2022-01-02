@@ -10,14 +10,22 @@ import { ManagerService } from 'src/app/services/manager.service';
 export class MainDashComponent implements OnInit {
 
   public eventsCount;
-
+  public teamsCount;
+  public userName = JSON.parse(localStorage.getItem('user')).name;
+  public email = JSON.parse(localStorage.getItem('user')).email;
+  public title ="";
+  public club_id;
   constructor( private managerService:ManagerService) { }
 
   ngOnInit(): void {
     const club_id = JSON.parse(localStorage.getItem('user')).club_id;
+    this.club_id = club_id;
     this.managerService.getStats(club_id).subscribe((res:any)=>{
       this.eventsCount = res.events;
+      this.teamsCount = res.teams;
+      this.title = res.title
     });
+
   }
 
 }
