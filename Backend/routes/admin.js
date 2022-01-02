@@ -52,6 +52,7 @@ router.post('/clubs',auth,multer({storage:storage}).single("image") ,(req, res, 
         title: req.body.title,
         description: req.body.description,
         image: req.file.filename,
+        active:"true"
     }
     );
     club.save()

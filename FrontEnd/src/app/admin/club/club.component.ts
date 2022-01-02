@@ -16,7 +16,6 @@ export class ClubComponent implements OnInit, OnDestroy {
 
   imagePreview:string;
   formAdd:FormGroup;
- // adminId = localStorage.getItem('user');
   public showAddClubForm = false;
 
   ngOnInit(): void {
@@ -51,10 +50,6 @@ export class ClubComponent implements OnInit, OnDestroy {
     this.showAddClubForm = false;
     this.router.navigate(['admin/club']);
   }
-
-
-
-
 
   onClickShowForm(){
     this.showAddClubForm = true;
