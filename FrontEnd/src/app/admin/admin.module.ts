@@ -9,6 +9,7 @@ import { ClubComponent } from './club/club.component';
 import { ClubDetailsComponent } from './club/club-details/club-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RequestComponent } from './request/request.component';
+import { MainDashAdminComponent } from './main-dash-admin/main-dash-admin.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RequestComponent } from './request/request.component';
     UserdetailComponent,
     ClubComponent,
     ClubDetailsComponent,
-    RequestComponent
+    RequestComponent,
+    MainDashAdminComponent
   ],
   imports: [
     CommonModule,

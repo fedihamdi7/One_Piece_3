@@ -88,7 +88,15 @@ DeleteUser(id:string){
 
  }); 
 }
+   //////////////////////////////////////// Stats ////////////////////////////////////////
 
+   getStats(){
+    return this.http.get(`http://localhost:3000/api/admin_user/stats`,{headers:this.head});
 
+  }
+  getStatsclubs(){
+
+    return this.http.get(`http://localhost:3000/api/admin_user/statsclubs`,{headers:this.head});
+  }
 
 }
