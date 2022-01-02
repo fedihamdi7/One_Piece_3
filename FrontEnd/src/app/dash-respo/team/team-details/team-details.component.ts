@@ -30,7 +30,7 @@ export class TeamDetailsComponent implements OnInit {
         const teamList = res;
         this.team = teamList.find(t=>t.team_id==teamId);
         this.formEdit = new FormGroup({
-          team_id: new FormControl(this.team.id,{validators:[Validators.required]}),
+          team_id: new FormControl(this.team.team_id,{validators:[Validators.required]}),
           team_name: new FormControl(this.team.team_name,{validators:[Validators.required]}),
           team_img: new FormControl(null,{validators:[Validators.required]}),
           team_fb: new FormControl(this.team.team_fb),
@@ -72,7 +72,7 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   async onDeleteTeam(){
-   await this.managerService.deleteTeam(this.team.id);
+     await this.managerService.deleteTeam(this.team.team_id);
    this.router.navigate(['dash-respo/team']);
   }
 }

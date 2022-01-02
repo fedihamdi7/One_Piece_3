@@ -16,7 +16,7 @@
 <div class="edit" *ngIf="showEventEditForm">
   <!-- create form -->
   <form [formGroup]="formEdit" (submit)="oneEditSubmit()">
-    <div class="form-group">
+    <div class="form-group" style="display: none;">
       <label for="event_id">Event ID</label>
       <input type="text" class="form-control" id="event_id" formControlName="event_id" placeholder="Enter event id">
     </div>

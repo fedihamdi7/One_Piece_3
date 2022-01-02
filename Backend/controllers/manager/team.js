@@ -28,7 +28,7 @@ exports.delete = (req, res, next) => {
 
         club.updateMany(
             {},
-            { $pull: { team: { id: req.params.id } } }
+            { $pull: { team: { team_id: req.params.id } } }
         )
         .then(result => res.json(result));
 
