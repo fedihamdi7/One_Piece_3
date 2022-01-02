@@ -293,7 +293,9 @@ getPost(){
 
     });
   }
+  //////////////////////////////////////// userImage  ////////////////////////////////////////
 
-
-
+  getUserImage(id:String){
+    return this.http.get(`http://localhost:3000/api/manager/${id}/userImage`,{headers:this.head});
+  }
 }

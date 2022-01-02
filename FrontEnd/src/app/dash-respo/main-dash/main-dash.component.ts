@@ -13,8 +13,10 @@ export class MainDashComponent implements OnInit {
   public teamsCount;
   public userName = JSON.parse(localStorage.getItem('user')).name;
   public email = JSON.parse(localStorage.getItem('user')).email;
+  public userId = JSON.parse(localStorage.getItem('user')).userId;
   public title ="";
   public club_id;
+  public image;
   constructor( private managerService:ManagerService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,9 @@ export class MainDashComponent implements OnInit {
       this.title = res.title
     });
 
-  }
+    this.managerService.getUserImage(this.userId).subscribe((res:any)=>{
+      this.image = res.user_img;
+    });
 
+  }
 }

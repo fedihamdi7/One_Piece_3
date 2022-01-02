@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const club = require('../../models/Club');
-
+const user = require('../../models/User');
 exports.get = (req, res, next) => {
     club.find({'_id':req.params.id},{'events':1,'_id':0})
     .then(events => res.json(events));
@@ -60,4 +60,9 @@ exports.update = (req, res, next) => {
         'post.$.post_description':req.body.post_description,        
     }})
     .then(post => res.json(post));
+}
+
+exports.getUserImage = (req, res, next) => {
+    user.find({'_id':req.params.id},{'user_img':1,'_id':0})
+    .then(image => res.json(image[0]));
 }

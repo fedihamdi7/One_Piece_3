@@ -166,3 +166,6 @@ router.get('/:id/post',auth,(req, res, next) => {
     club.findOne({'_id':req.params.id})
     .then(post => res.json(post));
 } );
+
+//////////////////////////////////////// get user image ////////////////////////////////////////
+router.get('/:id/userImage',auth, managerController.getUserImage);
