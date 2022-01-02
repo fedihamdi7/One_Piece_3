@@ -61,3 +61,4 @@ router.post('/clubs',auth,multer({storage:storage}).single("image") ,(req, res, 
 router.delete('/:id/clubs',auth, adminController.delete);
 
 module.exports = router;
+

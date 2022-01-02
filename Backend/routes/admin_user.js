@@ -82,4 +82,17 @@ router.put('/editUser/:id',auth,multer({storage:storageEvents}).single("user_img
 });
 router.delete('/:id/deleteuser',auth,userController.delete)
 
+
+//////////////////////////////////////// Stats ////////////////////////////////////////
+//router.get('/stats',auth, userController.getStats);
+router.get('/stats',auth, userController.getStats);
+
+
+//////////////////////////////////////// Statsclubs ////////////////////////////////////////
+//router.get('/stats',auth, userController.getStats);
+router.get('/statsclubs', userController.getStatsclubs);
 module.exports = router;
+
+
+
+
