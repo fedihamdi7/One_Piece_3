@@ -68,10 +68,12 @@
 
 .body .about-us img {
   width: 550px;
-  height: 400px;
+  height: 368px;
+  margin-top: 2%;
 }
 
 .body .events .title-events {
+  margin-top: 5%;
   margin-left: 43vw;
   font-size: 2.5rem;
 }
@@ -137,8 +139,9 @@
 }
 
 .body .clubs .title-clubs {
-  margin-left: 43vw;
+  margin-left: 49vw;
   font-size: 2.5rem;
+  margin-bottom: 2%;
 }
 /*# sourceMappingURL=style.css.map */
 
@@ -556,10 +559,12 @@ input[type="checkbox"]{
   position: relative;
   width: 100%;
   padding-right: 15px;
+  margin-top: 2%!important;
   padding-left: 15px;
 }
 .col-md-6 {
   max-width: 50%;
+  margin-top: 2%!important;
   flex: 0 0 50%;
   position: relative;
   width: 100%;
